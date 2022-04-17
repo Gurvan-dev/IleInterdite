@@ -1,7 +1,7 @@
 public class Modele extends Observable {
 
     /* PARAMETRE PLATEAU */
-    static Vector2 PLATEAU_TAILLE = new Vector2(20, 20);
+    static Vector2 PLATEAU_TAILLE = new Vector2(6, 6);
 
     /* PARAMETRE JOUEUR */
     static int JOUEUR_NOMBRE = 4;
@@ -70,6 +70,11 @@ public class Modele extends Observable {
 
     public void Asseche() {
         EndTurn();
+    }
+
+    /* GETTERS */
+    public int GetCurrentPlayer() {
+        return currentPlayer;
     }
 
 }

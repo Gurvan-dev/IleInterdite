@@ -5,16 +5,20 @@ import javax.swing.*;
 
 public class VueInput extends JPanel implements Observer {
     private Modele modele;
-    private Dimension dim = new Dimension(20, 100);
+    private JButton boutonHaut, boutonBas, boutonGauche, boutonDroite;
+    private JButton boutonEndTurn;
+    private JTextField currentInfo;
 
     public VueInput(Modele modele) {
         this.modele = modele;
         modele.addObserver(this);
 
-        JButton boutonHaut = new JButton("^");
-        JButton boutonBas = new JButton("v");
-        JButton boutonGauche = new JButton("<");
-        JButton boutonDroite = new JButton(">");
+        boutonHaut = new JButton("^");
+        boutonBas = new JButton("v");
+        boutonDroite = new JButton(">");
+        boutonGauche = new JButton("<");
+        boutonEndTurn = new JButton("End Turn");
+        currentInfo = new JTextField("");
 
         boutonHaut.addActionListener(e -> {
             modele.Haut();
@@ -28,18 +32,23 @@ public class VueInput extends JPanel implements Observer {
         boutonDroite.addActionListener(e -> {
             modele.Droite();
         });
+        boutonEndTurn.addActionListener(e -> {
+            modele.EndTurn();
+        });
 
         this.add(boutonHaut);
         this.add(boutonBas);
         this.add(boutonGauche);
         this.add(boutonDroite);
+        this.add(boutonEndTurn);
         int CASE_TAILLE_TOTALE = VueMain.CASE_ESPACE + VueMain.CASE_TAILLE;
-        Dimension dim = new Dimension(CASE_TAILLE_TOTALE, CASE_TAILLE_TOTALE * modele.plateau.taille.y);
+        Dimension dim = new Dimension(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE * modele.plateau.taille.y);
         this.setPreferredSize(dim);
 
     }
 
     public void update() {
+        currentInfo.setText("" + modele.GetCurrentPlayer());
     }
 
 }

@@ -6,8 +6,9 @@ import javax.swing.*;
 public class VueMain implements Observer {
 
     /* PARAMETRE CASE */
-    public static final int CASE_TAILLE = 20; // Taille de la cases.
-    public static final int CASE_ESPACE = 2; // Espace entre les cases.
+    public static final int CASE_TAILLE = 100; // Taille de la cases.
+    public static final int CASE_ESPACE = 10; // Espace entre les cases.
+    public static final int INPUT_WIDTH = 100;
 
     private JFrame frame;
 
