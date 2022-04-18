@@ -24,6 +24,11 @@ public class Joueur {
 
     }
 
+    public void removeItem(Objet o) {
+        if (inventaire.contains(o))
+            inventaire.remove(o);
+    }
+
     /*
      * Implémentation des actions possibles
      * Toutes les actions retournes un booléen vrai si l'action à pu être éfféctué
@@ -32,29 +37,37 @@ public class Joueur {
      * 'EffectueAction', avec le cout d'action correspondant
      */
 
-    public boolean Asseche(Dir direction) {
-        Vector2 caseAssecher = pos.copy();
-        caseAssecher.plus(Vector2.FromDir(direction));
-        if (modele.plateau.InBounds(caseAssecher) && modele.plateau.GetCase(caseAssecher.x, caseAssecher.y).Asseche()) {
+    public boolean Asseche(Vector2 caseAssecher) {
+        if (caseAssecher.distance(pos) <= 1) {
+            if (modele.plateau.InBounds(caseAssecher)
+                    && modele.plateau.GetCase(caseAssecher.x, caseAssecher.y).Asseche()) {
+                modele.EffectueAction(numJoueur, 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean Move(Vector2 newPos) {
+        if (newPos.distance(this.pos) == 1) {
+            if (!modele.plateau.InBounds(newPos))
+                return false;
+            if (modele.plateau.GetCase(newPos.x, newPos.y).etat == CaseEtat.SUBMERGE)
+                return false;
+            pos = newPos;
             modele.EffectueAction(numJoueur, 1);
             return true;
         }
         return false;
     }
 
-    public boolean Move(Dir direction) {
-        if (direction == Dir.CENTRE)
+    public boolean UtiliseObjet(int objNumber, Vector2 pos) {
+        if (inventaire.size() <= objNumber || objNumber < 0)
             return false;
-
-        Vector2 newPos = pos.copy();
-        newPos.plus(Vector2.FromDir(direction));
-        if (!modele.plateau.InBounds(newPos))
-            return false;
-        if (modele.plateau.GetCase(newPos.x, newPos.y).etat == CaseEtat.SUBMERGE)
-            return false;
-        pos = newPos;
-        modele.EffectueAction(numJoueur, 1);
-        return true;
+        boolean res = inventaire.get(objNumber).utiliseObjet(this, modele.plateau.GetCase(pos));
+        modele.EffectueAction(numJoueur, 0); // Les actions n'ont pas de coût mais on appelle pour update tout
+                                             // correctement
+        return res;
     }
 
 }

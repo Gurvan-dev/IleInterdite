@@ -1,24 +1,28 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
 import javax.swing.*;
+import javax.imageio.*;
+import java.io.*;
 
 public class VueInput extends JPanel implements Observer {
     private Modele modele;
     private JButton boutonHaut, boutonBas, boutonGauche, boutonDroite;
     private JButton boutonEndTurn;
+    private JCheckBox boutonAsseche;
     private JTextField joueurActuel;
     private JTextField actionRestante;
-    private JTextField[] inventaire;
+    private JButton[] inventaire;
 
     public VueInput(Modele modele) {
         this.modele = modele;
         modele.addObserver(this);
         int CASE_TAILLE_TOTALE = VueMain.CASE_ESPACE + VueMain.CASE_TAILLE;
 
+        /* Gestion des boutons & inputs */
         // Note : BoutonHaut et boutonBas sont inversé pour l'utilisateur car la
         // vuePlateau est 'inversée', i.e. le bas correspond au haut.
-        /* Gestion des boutons & inputs */
         boutonHaut = new JButton("v");
         boutonBas = new JButton("^");
         boutonDroite = new JButton(">");
@@ -26,22 +30,26 @@ public class VueInput extends JPanel implements Observer {
         boutonEndTurn = new JButton("End Turn");
         joueurActuel = new JTextField("");
         actionRestante = new JTextField("");
-        inventaire = new JTextField[Modele.JOUEUR_TAILLE_INVENTAIRE];
+        inventaire = new JButton[Modele.JOUEUR_TAILLE_INVENTAIRE];
+        boutonAsseche = new JCheckBox("Asseche");
 
         boutonHaut.addActionListener(e -> {
-            modele.Haut();
+            modele.Direction(Dir.HAUT);
         });
         boutonBas.addActionListener(e -> {
-            modele.Bas();
+            modele.Direction(Dir.BAS);
         });
         boutonGauche.addActionListener(e -> {
-            modele.Gauche();
+            modele.Direction(Dir.GAUCHE);
         });
         boutonDroite.addActionListener(e -> {
-            modele.Droite();
+            modele.Direction(Dir.DROITE);
         });
         boutonEndTurn.addActionListener(e -> {
             modele.EndTurn();
+        });
+        boutonAsseche.addActionListener(e -> {
+            modele.SetAsseche(boutonAsseche.isSelected());
         });
 
         /* Gestion du texte et info */
@@ -49,9 +57,12 @@ public class VueInput extends JPanel implements Observer {
         joueurActuel.setEditable(false);
         joueurActuel.setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
         for (int i = 0; i < inventaire.length; i++) {
-            inventaire[i] = new JTextField("");
-            inventaire[i].setEditable(false);
+            inventaire[i] = new JButton();
             inventaire[i].setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
+            int num = i; // Obligatoire car Java n'est pas content sans
+            inventaire[i].addActionListener(e -> {
+                modele.UtiliseObjet(num);
+            });
         }
         Update();
 
@@ -61,13 +72,12 @@ public class VueInput extends JPanel implements Observer {
         this.add(boutonGauche);
         this.add(boutonDroite);
         this.add(boutonEndTurn);
-        this.add(joueurActuel);
-        this.add(actionRestante);
+        this.add(boutonAsseche);
         for (int i = 0; i < inventaire.length; i++) {
             this.add(inventaire[i]);
         }
-
-        /* Fintions : Gestion de taille */
+        this.add(joueurActuel);
+        this.add(actionRestante);
 
         Dimension dim = new Dimension(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE * modele.plateau.taille.y);
         this.setPreferredSize(dim);

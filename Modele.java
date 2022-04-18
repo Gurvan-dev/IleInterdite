@@ -15,6 +15,7 @@ public class Modele extends Observable {
     static int PARTIE_NOMBRE_INONDATION = 3; // Nombre d'inondation a la fin de chaque tour
     static int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
     static boolean PARTIE_AUTO_END_TURN = true;
+    static int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
 
     /* PARAMETRE DECKS */
     static Integer[] DECK_TERRAIN = new Integer[] { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -29,19 +30,22 @@ public class Modele extends Observable {
     public final Joueur[] joueurs;
     private Deck<Objet> itemDeck;
 
-    private int currentPlayer;
+    private int currentPlayer = -1;
     private int actionRestante;
+    private boolean asseche = false;
+    private int objNumber = -1;
 
     public Modele() {
         plateau = new Plateau(PLATEAU_TAILLE);
         joueurs = new Joueur[JOUEUR_NOMBRE];
         itemDeck = new Deck<Objet>(DECK_ITEM);
+        itemDeck.Melange();
         for (int i = 0; i < joueurs.length; i++)
             joueurs[i] = new Joueur(this, JOUEUR_TAILLE_INVENTAIRE, Vector2.zero, i);
-        currentPlayer = -1;
         EndTurn();
     }
 
+    /* Gestion de la simulation */
     void EndTurn() {
 
         /* Ajout d'item au joueur qui vient de finir son tour */
@@ -78,24 +82,36 @@ public class Modele extends Observable {
         notifyObservers();
     }
 
-    public void Haut() {
-        joueurs[currentPlayer].Move(Dir.HAUT);
+    /* Gestion d'input */
+
+    // Cliqué sur une direction
+    public void Direction(Dir direction) {
+        Vector2 newPos = joueurs[currentPlayer].pos.copy();
+        newPos.plus(Vector2.FromDir(direction));
+        Case(newPos);
     }
 
-    public void Bas() {
-        joueurs[currentPlayer].Move(Dir.BAS);
+    // Cliqué sur une case
+    public void Case(Vector2 pos) {
+        if (objNumber >= 0) {
+            if (!joueurs[currentPlayer].UtiliseObjet(objNumber, pos))
+                objNumber = -1;
+        } else if (asseche) {
+            joueurs[currentPlayer].Asseche(pos);
+        } else {
+            joueurs[currentPlayer].Move(pos);
+        }
     }
 
-    public void Gauche() {
-        joueurs[currentPlayer].Move(Dir.GAUCHE);
+    // Cliqué sur le bouton pour activer / Désactiver le mode 'Assecher'
+    public void SetAsseche(boolean newStatus) {
+        asseche = newStatus;
     }
 
-    public void Droite() {
-        joueurs[currentPlayer].Move(Dir.DROITE);
-    }
-
-    public void Asseche() {
-        EndTurn();
+    // Cliqué sur le bouton pour utiliser l'objet numero num
+    public void UtiliseObjet(int num) {
+        System.out.println(num);
+        objNumber = num;
     }
 
     /* GETTERS */

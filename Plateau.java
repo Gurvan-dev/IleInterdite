@@ -12,6 +12,7 @@ public class Plateau {
 
     public Plateau(Vector2 taille) {
         this.deck = new Deck<Integer>(Modele.DECK_TERRAIN);
+        this.deck.Melange();
         this.taille = taille;
         cases = new Case[taille.x * taille.y];
         for (int x = 0; x < taille.x; x++) {
@@ -27,6 +28,10 @@ public class Plateau {
         return cases[num];
     }
 
+    public Case GetCase(Vector2 pos) {
+        return GetCase(pos.x, pos.y);
+    }
+
     public void Inonde() {
         int r = rand.nextInt(cases.length);
         int MAX_TRY = 100;
@@ -39,6 +44,12 @@ public class Plateau {
 
     public boolean InBounds(Vector2 pos) {
         return pos.x >= 0 && pos.x < taille.x && pos.y >= 0 && pos.y < taille.y;
+    }
+
+    public Vector2 posFromNumber(int i) {
+        int x = i % taille.x;
+        int y = (i - x) / taille.y;
+        return new Vector2(x, y);
     }
 
 }

@@ -17,6 +17,10 @@ public class Vector2 {
         return new Vector2(x, y);
     }
 
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+
     public static Vector2 FromDir(Dir dir) {
         switch (dir) {
             case CENTRE:
@@ -44,5 +48,9 @@ public class Vector2 {
     public void multiply(int scalar) {
         x *= scalar;
         y *= scalar;
+    }
+
+    public int distance(Vector2 other) {
+        return Math.abs((other.x - x)) + Math.abs(other.y - y);
     }
 }
