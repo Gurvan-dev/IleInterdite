@@ -1,14 +1,27 @@
+import java.util.*;
+
 public class Joueur {
     Vector2 pos;
-    Objet[] inventaire;
+    ArrayList<Objet> inventaire;
     final Modele modele;
     final int numJoueur;
+    final int tailleInventaire;
 
     public Joueur(Modele modele, int tailleInventaire, Vector2 pos, int numJoueur) {
         this.modele = modele;
         this.numJoueur = numJoueur;
-        inventaire = new Objet[tailleInventaire];
+        this.tailleInventaire = tailleInventaire;
+        this.inventaire = new ArrayList<Objet>();
         this.pos = pos;
+    }
+
+    public boolean ajouteItem(Objet o) {
+        if (inventaire.size() < tailleInventaire) {
+            inventaire.add(o);
+            return true;
+        }
+        return false;
+
     }
 
     /*
@@ -21,7 +34,7 @@ public class Joueur {
 
     public boolean Asseche(Dir direction) {
         Vector2 caseAssecher = pos.copy();
-        caseAssecher.add(Vector2.FromDir(direction));
+        caseAssecher.plus(Vector2.FromDir(direction));
         if (modele.plateau.InBounds(caseAssecher) && modele.plateau.GetCase(caseAssecher.x, caseAssecher.y).Asseche()) {
             modele.EffectueAction(numJoueur, 1);
             return true;
@@ -34,7 +47,7 @@ public class Joueur {
             return false;
 
         Vector2 newPos = pos.copy();
-        newPos.add(Vector2.FromDir(direction));
+        newPos.plus(Vector2.FromDir(direction));
         if (!modele.plateau.InBounds(newPos))
             return false;
         if (modele.plateau.GetCase(newPos.x, newPos.y).etat == CaseEtat.SUBMERGE)
@@ -43,4 +56,5 @@ public class Joueur {
         modele.EffectueAction(numJoueur, 1);
         return true;
     }
+
 }

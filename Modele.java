@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.util.*;
+
 public class Modele extends Observable {
 
     /* PARAMETRE PLATEAU */
@@ -10,10 +13,21 @@ public class Modele extends Observable {
 
     /* PARAMETRE PARTIE */
     static int PARTIE_NOMBRE_INONDATION = 3; // Nombre d'inondation a la fin de chaque tour
+    static int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
     static boolean PARTIE_AUTO_END_TURN = true;
+
+    /* PARAMETRE DECKS */
+    static Integer[] DECK_TERRAIN = new Integer[] { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+            5,
+            5,
+            5, 5, 5,
+            5, 5, 5, 5, 5, 5, 5 };
+    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.FEU), new Clef(CaseType.PIERRE),
+            new Clef(CaseType.TERRE), new Clef(CaseType.VENT) };
 
     public final Plateau plateau;
     public final Joueur[] joueurs;
+    private Deck<Objet> itemDeck;
 
     private int currentPlayer;
     private int actionRestante;
@@ -21,6 +35,7 @@ public class Modele extends Observable {
     public Modele() {
         plateau = new Plateau(PLATEAU_TAILLE);
         joueurs = new Joueur[JOUEUR_NOMBRE];
+        itemDeck = new Deck<Objet>(DECK_ITEM);
         for (int i = 0; i < joueurs.length; i++)
             joueurs[i] = new Joueur(this, JOUEUR_TAILLE_INVENTAIRE, Vector2.zero, i);
         currentPlayer = -1;
@@ -28,10 +43,22 @@ public class Modele extends Observable {
     }
 
     void EndTurn() {
+
+        /* Ajout d'item au joueur qui vient de finir son tour */
+        if (currentPlayer >= 0) // On n'ajoute pas d'Objets si le joueur est -1 (En début de partie)
+            for (int i = 0; i < PARTIE_NOMBRE_CARTE_PIOCHE; i++) {
+                Objet item = itemDeck.RetireTop();
+                joueurs[currentPlayer].ajouteItem(item);
+            }
+
+        /* Inondation du terrain */
+        Inonde();
+
+        /* On passe au joueur d'après */
         currentPlayer++;
         currentPlayer %= joueurs.length;
         actionRestante = JOUEUR_NOMBRE_ACTION;
-        Inonde();
+
         notifyObservers();
     }
 
@@ -78,6 +105,23 @@ public class Modele extends Observable {
 
     public int GetNombreAction() {
         return actionRestante;
+    }
+
+    public Joueur GetCurrentJoueur() {
+        return currentPlayer >= 0 ? joueurs[currentPlayer] : null;
+    }
+
+    public ArrayList<Joueur> GetJoueursOnCase(Vector2 pos) {
+        ArrayList<Joueur> returned = new ArrayList<Joueur>();
+        for (int i = 0; i < joueurs.length; i++) {
+            if (joueurs[i].pos.equals(pos))
+                returned.add(joueurs[i]);
+        }
+        return returned;
+    }
+
+    public int GetNombreJoueurSurCase(Vector2 pos) {
+        return GetJoueursOnCase(pos).size();
     }
 
 }

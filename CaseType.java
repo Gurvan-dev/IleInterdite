@@ -15,16 +15,14 @@ public enum CaseType {
         switch (t) {
             case HELIPORT:
                 return Color.RED;
-            case NORMAL:
-                return Color.WHITE;
             case FEU:
                 return Color.ORANGE;
             case VENT:
                 return Color.LIGHT_GRAY;
             case PIERRE:
                 return Color.BLACK;
-            default: // Case TERRE
-                return Color.YELLOW;
+            default: // Case NORMAL
+                return Color.WHITE;
 
         }
     }
@@ -34,15 +32,13 @@ public enum CaseType {
             case 0:
                 return HELIPORT;
             case 1:
-                return NORMAL;
-            case 2:
                 return FEU;
-            case 3:
+            case 2:
                 return VENT;
-            case 4:
+            case 3:
                 return PIERRE;
             default:
-                return PIERRE;
+                return NORMAL;
         }
     }
 
@@ -50,4 +46,5 @@ public enum CaseType {
         int n = rand.nextInt(5);
         return FromInt(n);
     }
+
 }

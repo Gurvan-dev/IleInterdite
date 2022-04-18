@@ -12,6 +12,10 @@ public class Case {
         this.type = type;
     }
 
+    public Case(Vector2 pos, int type_id) {
+        this(pos, CaseType.FromInt(type_id));
+    }
+
     public Case(Vector2 pos) {
         this(pos, CaseType.random());
     }
@@ -52,11 +56,12 @@ public class Case {
     }
 
     public Color GetColor() {
-        if (this.etat == CaseEtat.SUBMERGE)
+        if (this.etat == CaseEtat.SUBMERGE) // On renvoie une couleur transparente
             return new Color(0, 0, 0, 0);
         Color c = CaseType.colorFromEnum(type);
         if (this.etat == CaseEtat.INONDE) {
-            c = new Color(c.getRed(), c.getGreen(), Math.min((int) (c.getBlue() * 1.5), 255));
+            c = new Color((int) (c.getRed() * 0.5), (int) (c.getGreen() * 0.5),
+                    Math.min((int) (c.getBlue() * 1.5), 255));
         }
         return c;
     }

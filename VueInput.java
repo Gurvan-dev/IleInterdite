@@ -9,6 +9,7 @@ public class VueInput extends JPanel implements Observer {
     private JButton boutonEndTurn;
     private JTextField joueurActuel;
     private JTextField actionRestante;
+    private JTextField[] inventaire;
 
     public VueInput(Modele modele) {
         this.modele = modele;
@@ -25,6 +26,7 @@ public class VueInput extends JPanel implements Observer {
         boutonEndTurn = new JButton("End Turn");
         joueurActuel = new JTextField("");
         actionRestante = new JTextField("");
+        inventaire = new JTextField[Modele.JOUEUR_TAILLE_INVENTAIRE];
 
         boutonHaut.addActionListener(e -> {
             modele.Haut();
@@ -46,6 +48,11 @@ public class VueInput extends JPanel implements Observer {
         actionRestante.setEditable(false);
         joueurActuel.setEditable(false);
         joueurActuel.setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
+        for (int i = 0; i < inventaire.length; i++) {
+            inventaire[i] = new JTextField("");
+            inventaire[i].setEditable(false);
+            inventaire[i].setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
+        }
         Update();
 
         /* On ajoute tout en composants */
@@ -56,14 +63,13 @@ public class VueInput extends JPanel implements Observer {
         this.add(boutonEndTurn);
         this.add(joueurActuel);
         this.add(actionRestante);
+        for (int i = 0; i < inventaire.length; i++) {
+            this.add(inventaire[i]);
+        }
 
         /* Fintions : Gestion de taille */
 
         Dimension dim = new Dimension(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE * modele.plateau.taille.y);
-        // currentInfo.setPreferredSize(new Dimension(VueMain.INPUT_WIDTH,
-        // CASE_TAILLE_TOTALE * 3));
-
-        // currentInfo.setSize((int) dim.getWidth(), CASE_TAILLE_TOTALE * 10);
         this.setPreferredSize(dim);
 
     }
@@ -71,7 +77,18 @@ public class VueInput extends JPanel implements Observer {
     public void Update() {
         joueurActuel.setText("Joueur actuel : " + modele.GetCurrentPlayer());
         actionRestante.setText("Action restante : " + modele.GetNombreAction());
+        Joueur currentJoueur = modele.GetCurrentJoueur();
+        if (currentJoueur != null) {
+            int i = 0;
+            for (Objet o : currentJoueur.inventaire) {
+                inventaire[i].setText("" + o);
+                i++;
+            }
+            for (int j = i; j < inventaire.length; j++) {
+                inventaire[j].setText("---------------------");
+            }
 
+        }
     }
 
 }

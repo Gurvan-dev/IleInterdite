@@ -17,16 +17,6 @@ public class Vector2 {
         return new Vector2(x, y);
     }
 
-    public void add(Vector2 other) {
-        x += other.x;
-        y += other.y;
-    }
-
-    public void mult(int scalar) {
-        x *= scalar;
-        y *= scalar;
-    }
-
     public static Vector2 FromDir(Dir dir) {
         switch (dir) {
             case CENTRE:
@@ -40,5 +30,19 @@ public class Vector2 {
             default:
                 return Vector2.right;
         }
+    }
+
+    public boolean equals(Vector2 other) {
+        return this.x == other.x && this.y == other.y;
+    }
+
+    public void plus(Vector2 other) {
+        x += other.x;
+        y += other.y;
+    }
+
+    public void multiply(int scalar) {
+        x *= scalar;
+        y *= scalar;
     }
 }

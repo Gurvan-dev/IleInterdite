@@ -8,13 +8,16 @@ public class Plateau {
     public static Color PLATEAU_COULEUR = Color.blue;
     private static Random rand = new Random();
 
+    private Deck<Integer> deck;
+
     public Plateau(Vector2 taille) {
+        this.deck = new Deck<Integer>(Modele.DECK_TERRAIN);
         this.taille = taille;
         cases = new Case[taille.x * taille.y];
         for (int x = 0; x < taille.x; x++) {
             for (int y = 0; y < taille.y; y++) {
                 int num = x + y * taille.x;
-                cases[num] = new Case(new Vector2(x, y));
+                cases[num] = new Case(new Vector2(x, y), deck.RetireTop());
             }
         }
     }
