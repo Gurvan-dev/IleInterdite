@@ -3,17 +3,27 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
+import javax.imageio.*;
+import java.io.*;
 
 public class VuePlateau extends JPanel implements Observer {
 
     private Modele modele;
     private final int CASE_TAILLE_TOTALE;
-    private BufferedImage pion; // TODO : Move ailleurs
+    private BufferedImage img; // TODO : Move ailleurs
 
     public VuePlateau(Modele modele) {
 
         this.modele = modele;
         modele.addObserver(this);
+
+        /* TMP LOAD IMAGE */
+        File f = new File("img/pion1.png");
+        try {
+            img = ImageIO.read(f);
+        } catch (IOException e) {
+            // Catch et faire qqchose ici quoi
+        }
 
         CASE_TAILLE_TOTALE = VueMain.CASE_TAILLE + VueMain.CASE_ESPACE;
 
@@ -39,13 +49,13 @@ public class VuePlateau extends JPanel implements Observer {
             Vector2 pos = new Vector2(j.pos.x, j.pos.y);
             pos.mult(CASE_TAILLE_TOTALE);
 
-            g.drawImage(pion, pos.x, pos.y, pos.x + VueMain.CASE_TAILLE, pos.y + VueMain.CASE_TAILLE, 0, 0,
-                    pion.getWidth(),
-                    pion.getHeight(), null);
+            g.drawImage(img, pos.x, pos.y, pos.x + VueMain.CASE_TAILLE, pos.y + VueMain.CASE_TAILLE, 0, 0,
+                    img.getWidth(),
+                    img.getHeight(), null);
         }
     }
 
-    public void update() {
+    public void Update() {
         super.repaint();
     }
 

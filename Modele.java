@@ -30,7 +30,6 @@ public class Modele extends Observable {
     void EndTurn() {
         currentPlayer++;
         currentPlayer %= joueurs.length;
-        System.out.println(currentPlayer);
         actionRestante = JOUEUR_NOMBRE_ACTION;
         Inonde();
         notifyObservers();
@@ -53,19 +52,19 @@ public class Modele extends Observable {
     }
 
     public void Haut() {
-        EndTurn();
+        joueurs[currentPlayer].Move(Dir.HAUT);
     }
 
     public void Bas() {
-        EndTurn();
+        joueurs[currentPlayer].Move(Dir.BAS);
     }
 
     public void Gauche() {
-        EndTurn();
+        joueurs[currentPlayer].Move(Dir.GAUCHE);
     }
 
     public void Droite() {
-        EndTurn();
+        joueurs[currentPlayer].Move(Dir.DROITE);
     }
 
     public void Asseche() {
@@ -75,6 +74,10 @@ public class Modele extends Observable {
     /* GETTERS */
     public int GetCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public int GetNombreAction() {
+        return actionRestante;
     }
 
 }

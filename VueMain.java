@@ -8,7 +8,7 @@ public class VueMain implements Observer {
     /* PARAMETRE CASE */
     public static final int CASE_TAILLE = 100; // Taille de la cases.
     public static final int CASE_ESPACE = 10; // Espace entre les cases.
-    public static final int INPUT_WIDTH = 100;
+    public static final int INPUT_WIDTH = 125; // Taille de la barre a droite ou il y a les boutons
 
     private JFrame frame;
 
@@ -37,7 +37,7 @@ public class VueMain implements Observer {
         frame.setVisible(true);
     }
 
-    public void update() {
+    public void Update() {
     }
 
 }

@@ -34,4 +34,8 @@ public class Plateau {
         }
     }
 
+    public boolean InBounds(Vector2 pos) {
+        return pos.x >= 0 && pos.x < taille.x && pos.y >= 0 && pos.y < taille.y;
+    }
+
 }
