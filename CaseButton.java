@@ -29,7 +29,8 @@ public class CaseButton extends JButton {
         return img;
     }
 
-    public void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
+        super.repaint();
         /* Couleur de la case */
         g.setColor(modele.plateau.GetCase(pos.x, pos.y).GetColor());
         g.fillRect(0, 0, this.getWidth(), this.getHeight());

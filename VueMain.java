@@ -9,11 +9,13 @@ public class VueMain implements Observer {
     public static final int CASE_TAILLE = 100; // Taille de la cases.
     public static final int CASE_ESPACE = 10; // Espace entre les cases.
     public static final int INPUT_WIDTH = 125; // Taille de la barre a droite ou il y a les boutons
+    public static final int EAU_WIDTH = 100;
 
     private JFrame frame;
 
     private VuePlateau vuePlateau;
     private VueInput vueInput;
+    private VueEau vueEau;
 
     private Modele modele;
 
@@ -24,11 +26,15 @@ public class VueMain implements Observer {
         /* Mise en place des différentes vues */
         vuePlateau = new VuePlateau(modele);
         vueInput = new VueInput(modele);
+        vueEau = new VueEau(modele);
 
         /* Fenêtre. */
         frame = new JFrame();
         frame.setLayout(new FlowLayout());
         frame.setTitle("L'île interdite.");
+
+        // frame.add(vueEau);
+        frame.add(vueEau);
         frame.add(vuePlateau);
         frame.add(vueInput);
 

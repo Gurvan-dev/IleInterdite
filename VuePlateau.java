@@ -35,7 +35,8 @@ public class VuePlateau extends JPanel implements Observer {
         this.setPreferredSize(dim);
     }
 
-    public void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.setColor(Plateau.PLATEAU_COULEUR);
         g.fillRect(0, 0, modele.plateau.taille.x * (CASE_TAILLE_TOTALE), modele.plateau.taille.y * CASE_TAILLE_TOTALE);
     }

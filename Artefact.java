@@ -5,11 +5,15 @@ public class Artefact extends Objet {
         this.type = type;
     }
 
+    public boolean autoUse() {
+        return false;
+    }
+
     public String toString() {
         return "Artefact (" + type + ")";
     }
 
-    public boolean utiliseObjet(Joueur j, Case c) {
+    public boolean utiliseObjet(Joueur j, Case c, Modele m) {
         return false; // On ne peut pas utiliser cet objet.
     }
 }
