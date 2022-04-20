@@ -40,8 +40,8 @@ public class InventaireButton extends JButton implements Observer {
             g.dispose();
         } else {
             BufferedImage img = o.toImage();
-            g.drawImage(img, 0, 0, VueMain.OBJET_WIDTH,
-                    VueMain.OBJET_WIDTH, 0, 0,
+            g.drawImage(img, 0, 0, GameSettings.OBJET_WIDTH,
+                    GameSettings.OBJET_WIDTH, 0, 0,
                     img.getWidth(),
                     img.getHeight(), null);
         }

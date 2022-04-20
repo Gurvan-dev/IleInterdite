@@ -17,7 +17,7 @@ public class VueInput extends JPanel implements Observer {
     public VueInput(Modele modele) {
         this.modele = modele;
         modele.addObserver(this);
-        int CASE_TAILLE_TOTALE = VueMain.CASE_ESPACE + VueMain.CASE_TAILLE;
+        int CASE_TAILLE_TOTALE = GameSettings.CASE_ESPACE + GameSettings.CASE_TAILLE;
 
         /* Gestion des boutons & inputs */
         // Note : BoutonHaut et boutonBas sont inversé pour l'utilisateur car la
@@ -54,7 +54,7 @@ public class VueInput extends JPanel implements Observer {
         /* Gestion du texte et info */
         actionRestante.setEditable(false);
         joueurActuel.setEditable(false);
-        joueurActuel.setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
+        joueurActuel.setSize(GameSettings.INPUT_WIDTH, CASE_TAILLE_TOTALE);
 
         Update();
 
@@ -69,7 +69,7 @@ public class VueInput extends JPanel implements Observer {
         this.add(joueurActuel);
         this.add(actionRestante);
 
-        Dimension dim = new Dimension(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE * modele.plateau.taille.y);
+        Dimension dim = new Dimension(GameSettings.INPUT_WIDTH, CASE_TAILLE_TOTALE * modele.plateau.taille.y);
         this.setPreferredSize(dim);
 
     }

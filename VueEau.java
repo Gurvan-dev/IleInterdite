@@ -18,8 +18,8 @@ public class VueEau extends JPanel implements Observer {
     public VueEau(Modele modele) {
         modele.addObserver(this);
         this.modele = modele;
-        height = (VueMain.CASE_ESPACE + VueMain.CASE_TAILLE) * modele.plateau.taille.y;
-        Dimension dim = new Dimension(VueMain.EAU_WIDTH, height);
+        height = (GameSettings.CASE_ESPACE + GameSettings.CASE_TAILLE) * modele.plateau.taille.y;
+        Dimension dim = new Dimension(GameSettings.EAU_WIDTH, height);
         this.setPreferredSize(dim);
 
     }
@@ -29,9 +29,9 @@ public class VueEau extends JPanel implements Observer {
         g.setColor(backgroundColor);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(eauColor);
-        float scale = (float) modele.GetNiveauEau() / (float) Modele.PARTIE_NIVEAU_EAU_MAX;
+        float scale = (float) modele.GetNiveauEau() / (float) GameSettings.PARTIE_NIVEAU_EAU_MAX;
         if (scale > 0)
-            g.fillRect(0, height - (int) (height * scale), VueMain.EAU_WIDTH, (int) (height * scale));
+            g.fillRect(0, height - (int) (height * scale), GameSettings.EAU_WIDTH, (int) (height * scale));
     }
 
     public void Update() {

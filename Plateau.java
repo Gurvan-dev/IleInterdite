@@ -5,16 +5,13 @@ public class Plateau {
 
     private Case[] cases;
     public final Vector2 taille;
-    public static Color PLATEAU_COULEUR = Color.blue;
-    public static Color PLATEAU_SELECT_COULEUR = Color.green; // La couleur pour mettre en avant la case ou le joueur
-                                                              // qui joue actuellement se situe
-    public static int PLATEAU_SELECT_WIDTH = 20;
+
     private static Random rand = new Random();
 
     private Deck<Integer> deck;
 
     public Plateau(Vector2 taille) {
-        this.deck = new Deck<Integer>(Modele.DECK_TERRAIN);
+        this.deck = new Deck<Integer>(GameSettings.DECK_TERRAIN);
         this.deck.Melange();
         this.taille = taille;
         cases = new Case[taille.x * taille.y];

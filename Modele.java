@@ -3,30 +3,6 @@ import java.util.*;
 
 public class Modele extends Observable {
 
-    /* PARAMETRE PLATEAU */
-    static Vector2 PLATEAU_TAILLE = new Vector2(6, 6);
-
-    /* PARAMETRE JOUEUR */
-    static final int JOUEUR_NOMBRE = 4;
-    static final int JOUEUR_NOMBRE_ACTION = 3;
-    static final int JOUEUR_TAILLE_INVENTAIRE = 5;
-
-    /* PARAMETRE PARTIE */
-    static int PARTIE_NOMBRE_INONDATION = 3; // Nombre d'inondation a la fin de chaque tour
-    static final int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
-    static final boolean PARTIE_AUTO_END_TURN = true;
-    static final int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
-    static final int PARTIE_NIVEAU_EAU_MAX = 10;
-
-    /* PARAMETRE DECKS */
-    static Integer[] DECK_TERRAIN = new Integer[] { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-            5,
-            5,
-            5, 5, 5,
-            5, 5, 5, 5, 5, 5, 5 };
-    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.FEU), new Clef(CaseType.PIERRE),
-            new Clef(CaseType.TERRE), new Clef(CaseType.VENT), new MonteeEau(), new Helicoptere(), new Helicoptere() };
-
     public final Plateau plateau;
     public final Joueur[] joueurs;
     private Deck<Objet> itemDeck;
@@ -42,13 +18,13 @@ public class Modele extends Observable {
     private int niveauEauActuel = 2;
 
     public Modele() {
-        plateau = new Plateau(PLATEAU_TAILLE);
-        joueurs = new Joueur[JOUEUR_NOMBRE];
-        itemDeck = new Deck<Objet>(DECK_ITEM);
+        plateau = new Plateau(GameSettings.PLATEAU_TAILLE);
+        joueurs = new Joueur[GameSettings.JOUEUR_NOMBRE];
+        itemDeck = new Deck<Objet>(GameSettings.DECK_ITEM);
         itemDeck.Melange();
         for (int i = 0; i < joueurs.length; i++)
-            joueurs[i] = new Joueur(this, JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), i);
-        niveauEauActuel = PARTIE_NOMBRE_INONDATION;
+            joueurs[i] = new Joueur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), i);
+        niveauEauActuel = GameSettings.PARTIE_NOMBRE_INONDATION;
         EndTurn();
     }
 
@@ -57,7 +33,7 @@ public class Modele extends Observable {
 
         /* Ajout d'item au joueur qui vient de finir son tour */
         if (currentPlayer >= 0) // On n'ajoute pas d'Objets si le joueur est -1 (En début de partie)
-            for (int i = 0; i < PARTIE_NOMBRE_CARTE_PIOCHE; i++) {
+            for (int i = 0; i < GameSettings.PARTIE_NOMBRE_CARTE_PIOCHE; i++) {
                 Objet item = itemDeck.RetireTop();
                 if (item.autoUse()) {
                     item.utiliseObjet(joueurs[currentPlayer], plateau.GetCase(joueurs[currentPlayer].pos), this);
@@ -72,13 +48,13 @@ public class Modele extends Observable {
         /* On passe au joueur d'après */
         currentPlayer++;
         currentPlayer %= joueurs.length;
-        actionRestante = JOUEUR_NOMBRE_ACTION;
+        actionRestante = GameSettings.JOUEUR_NOMBRE_ACTION;
 
         notifyObservers();
     }
 
     void Inonde() {
-        for (int i = 0; i < PARTIE_NOMBRE_INONDATION; i++) {
+        for (int i = 0; i < GameSettings.PARTIE_NOMBRE_INONDATION; i++) {
             plateau.Inonde();
         }
         // On va vérifier si un des joueur est dans une case qui a été submergé. Si
@@ -107,7 +83,7 @@ public class Modele extends Observable {
         if (coutAction <= actionRestante && numJoueur == currentPlayer) {
             actionRestante -= coutAction;
         }
-        if (actionRestante <= 0 && PARTIE_AUTO_END_TURN) {
+        if (actionRestante <= 0 && GameSettings.PARTIE_AUTO_END_TURN) {
             EndTurn();
         }
         notifyObservers();
@@ -115,7 +91,7 @@ public class Modele extends Observable {
 
     public void MonteeEau() {
         niveauEauActuel++;
-        if (niveauEauActuel >= PARTIE_NIVEAU_EAU_MAX)
+        if (niveauEauActuel >= GameSettings.PARTIE_NIVEAU_EAU_MAX)
             GameOver();
         notifyObservers();
     }

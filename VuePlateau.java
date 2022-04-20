@@ -17,14 +17,14 @@ public class VuePlateau extends JPanel implements Observer {
 
         this.modele = modele;
         modele.addObserver(this);
-        this.setLayout(new GridLayout(modele.plateau.taille.x, modele.plateau.taille.y, VueMain.CASE_ESPACE,
-                VueMain.CASE_ESPACE));
+        this.setLayout(new GridLayout(modele.plateau.taille.x, modele.plateau.taille.y, GameSettings.CASE_ESPACE,
+                GameSettings.CASE_ESPACE));
         /* INITIALISATION DES CASES */
-        CASE_TAILLE_TOTALE = VueMain.CASE_TAILLE + VueMain.CASE_ESPACE;
+        CASE_TAILLE_TOTALE = GameSettings.CASE_TAILLE + GameSettings.CASE_ESPACE;
         Cases = new CaseButton[modele.plateau.taille.x * modele.plateau.taille.y];
         for (int i = 0; i < Cases.length; i++) {
             Cases[i] = new CaseButton(modele.plateau.posFromNumber(i), modele);
-            Cases[i].setSize(VueMain.CASE_TAILLE, VueMain.CASE_TAILLE);
+            Cases[i].setSize(GameSettings.CASE_TAILLE, GameSettings.CASE_TAILLE);
             this.add(Cases[i]);
         }
 
@@ -37,7 +37,7 @@ public class VuePlateau extends JPanel implements Observer {
 
     protected void paintComponent(Graphics g) {
         super.repaint();
-        g.setColor(Plateau.PLATEAU_COULEUR);
+        g.setColor(GameSettings.PLATEAU_COULEUR);
         g.fillRect(0, 0, modele.plateau.taille.x * (CASE_TAILLE_TOTALE), modele.plateau.taille.y * CASE_TAILLE_TOTALE);
     }
 

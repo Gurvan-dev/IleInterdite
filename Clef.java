@@ -37,8 +37,9 @@ public class Clef extends Objet {
                     clefMemeType.add(co);
             }
         }
-        if (clefMemeType.size() >= Modele.PARTIE_NOMBRE_CLEF_POUR_ARTEFACT) { // On peut penser a un paramètre statique
-                                                                              // nombre de clef pour ouvrir
+        if (clefMemeType.size() >= GameSettings.PARTIE_NOMBRE_CLEF_POUR_ARTEFACT) { // On peut penser a un paramètre
+                                                                                    // statique
+            // nombre de clef pour ouvrir
             for (Objet o : clefMemeType)
                 if (o != this) // This sera remove automatiquement a la fin quand on utiliser un objet
                     j.removeItem(o);

@@ -15,14 +15,14 @@ public class VueInventaire extends JPanel implements Observer {
         this.modele = modele;
         this.currentJoueur = currentJoueur;
         this.setLayout(
-                new GridLayout(Modele.JOUEUR_TAILLE_INVENTAIRE, 1, VueMain.OBJET_ESPACE,
-                        VueMain.OBJET_ESPACE));
+                new GridLayout(GameSettings.JOUEUR_TAILLE_INVENTAIRE, 1, GameSettings.OBJET_ESPACE,
+                        GameSettings.OBJET_ESPACE));
         modele.addObserver(this);
 
-        inventaire = new InventaireButton[Modele.JOUEUR_TAILLE_INVENTAIRE];
+        inventaire = new InventaireButton[GameSettings.JOUEUR_TAILLE_INVENTAIRE];
         for (int i = 0; i < inventaire.length; i++) {
             inventaire[i] = new InventaireButton(modele, currentJoueur, i);
-            inventaire[i].setSize(VueMain.OBJET_WIDTH, VueMain.OBJET_WIDTH);
+            inventaire[i].setSize(GameSettings.OBJET_WIDTH, GameSettings.OBJET_WIDTH);
             this.add(inventaire[i]);
         }
 
@@ -30,8 +30,8 @@ public class VueInventaire extends JPanel implements Observer {
 
         // Note : Comme le gridlayout stretch ses components, on doit bien vérifier
         // qu'il fait la hauteur que l'on souhaiterais
-        Dimension dim = new Dimension(VueMain.OBJET_WIDTH,
-                VueMain.OBJET_WIDTH * Modele.JOUEUR_TAILLE_INVENTAIRE);
+        Dimension dim = new Dimension(GameSettings.OBJET_WIDTH,
+                GameSettings.OBJET_WIDTH * GameSettings.JOUEUR_TAILLE_INVENTAIRE);
         this.setPreferredSize(dim);
 
     }

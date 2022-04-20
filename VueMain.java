@@ -5,14 +5,6 @@ import javax.swing.*;
 
 public class VueMain implements Observer {
 
-    /* PARAMETRE CASE */
-    public static final int CASE_TAILLE = 100; // Taille de la cases.
-    public static final int CASE_ESPACE = 10; // Espace entre les cases.
-    public static final int INPUT_WIDTH = 125; // Taille de la barre a droite ou il y a les boutons
-    public static final int EAU_WIDTH = 100;
-    public static final int OBJET_ESPACE = 10;
-    public static final int OBJET_WIDTH = 100;
-
     private JFrame frame;
 
     private VuePlateau vuePlateau;
@@ -30,8 +22,8 @@ public class VueMain implements Observer {
         vuePlateau = new VuePlateau(modele);
         vueInput = new VueInput(modele);
         vueEau = new VueEau(modele);
-        vueInventaires = new VueInventaire[Modele.JOUEUR_NOMBRE];
-        for (int i = 0; i < Modele.JOUEUR_NOMBRE; i++)
+        vueInventaires = new VueInventaire[GameSettings.JOUEUR_NOMBRE];
+        for (int i = 0; i < GameSettings.JOUEUR_NOMBRE; i++)
             vueInventaires[i] = new VueInventaire(modele, modele.GetJoueur(i));
 
         /* Fenêtre. */

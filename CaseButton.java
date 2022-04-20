@@ -46,14 +46,14 @@ public class CaseButton extends JButton {
         /* Dessiner les pions sur la case... */
         ArrayList<Joueur> jList = modele.GetJoueursOnCase(pos);
         if (jList.contains(modele.GetCurrentJoueur())) {
-            g2d.setStroke(new BasicStroke(Plateau.PLATEAU_SELECT_WIDTH));
-            g2d.setColor(Plateau.PLATEAU_SELECT_COULEUR);
+            g2d.setStroke(new BasicStroke(GameSettings.PLATEAU_SELECT_WIDTH));
+            g2d.setColor(GameSettings.PLATEAU_SELECT_COULEUR);
             g2d.drawRect(0, 0, this.getWidth(), this.getHeight());
         }
         if (jList.size() > 0) { // ... Si il y a au moins un joueur sur la case
-            int tailleDessin = VueMain.CASE_TAILLE / jList.size(); // La taille du dessin du pion est
-                                                                   // proportionelle au nombre de pions sur
-                                                                   // ce point
+            int tailleDessin = GameSettings.CASE_TAILLE / jList.size(); // La taille du dessin du pion est
+            // proportionelle au nombre de pions sur
+            // ce point
             for (int i = 0; i < jList.size(); i++) { // On va placer tout les joueurs sur une même case en
                                                      // un seul coup
                 Vector2 posFinal = Vector2.zero.copy();
