@@ -1,10 +1,4 @@
-import java.util.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import javax.swing.*;
-import javax.imageio.*;
-import java.io.*;
 
 public class GameSettings {
 
@@ -30,7 +24,8 @@ public class GameSettings {
             5, 5, 5,
             5, 5, 5, 5, 5, 5, 5 };
     static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.FEU), new Clef(CaseType.PIERRE),
-            new Clef(CaseType.TERRE), new Clef(CaseType.VENT), new MonteeEau(), new Helicoptere(), new Helicoptere() };
+            new Clef(CaseType.TERRE), new Clef(CaseType.VENT), new MonteeEau(), new Helicoptere(), new Helicoptere(),
+            new SacSable(), new SacSable() };
 
     /* PARAMETRE AFFICHAGE PLATEAU */
     static Color PLATEAU_COULEUR = Color.blue;
@@ -46,6 +41,12 @@ public class GameSettings {
     static int OBJET_ESPACE = 10; // Espace entre chaque case d'objet
     static int OBJET_WIDTH = 125; // Taille de chaque case d'objet
 
+    /*
+     * @desc Resize la fenêtre en multipliant la taille de tout les élements par
+     * 'factor'
+     * 
+     * @param factor Le facteur a laquelle rescale la fenêtre
+     */
     static void changeGameScale(float factor) {
         CASE_TAILLE *= factor;
         CASE_ESPACE *= factor;

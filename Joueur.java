@@ -29,6 +29,10 @@ public class Joueur {
             inventaire.remove(o);
     }
 
+    public void removeItem(int objNumber) {
+        inventaire.remove(objNumber);
+    }
+
     public Objet getItem(int objNumber) {
         return objNumber >= 0 && objNumber < inventaire.size() ? inventaire.get(objNumber) : null;
     }

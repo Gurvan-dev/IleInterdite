@@ -1,6 +1,4 @@
 import java.awt.image.*;
-import javax.imageio.*;
-import java.io.*;
 
 public abstract class Objet {
     public abstract boolean autoUse(); // Retourne si oui ou non on doit utiliser l'objet automatiquement quand on le

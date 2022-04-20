@@ -1,10 +1,7 @@
-import java.util.*;
+
+import java.util.ArrayList;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
 import javax.swing.*;
-import javax.imageio.*;
-import java.io.*;
 
 public class CaseButton extends JButton {
 
@@ -13,6 +10,7 @@ public class CaseButton extends JButton {
     private Modele modele;
 
     public CaseButton(Vector2 pos, Modele modele) {
+
         super();
         this.pos = pos;
         this.setBorderPainted(false);
@@ -31,6 +29,7 @@ public class CaseButton extends JButton {
     }
 
     protected void paintComponent(Graphics g) {
+
         // super.repaint();
         Graphics2D g2d = (Graphics2D) g;
         /* Couleur de la case */

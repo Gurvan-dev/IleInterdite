@@ -1,10 +1,5 @@
-import java.util.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
 import javax.swing.*;
-import javax.imageio.*;
-import java.io.*;
 
 public class VueInventaire extends JPanel implements Observer {
     Modele modele;
@@ -37,18 +32,5 @@ public class VueInventaire extends JPanel implements Observer {
     }
 
     public void Update() {
-        /*
-         * if (currentJoueur != null) {
-         * int i = 0;
-         * for (Objet o : currentJoueur.inventaire) {
-         * inventaire[i].setText("" + o);
-         * i++;
-         * }
-         * for (int j = i; j < inventaire.length; j++) {
-         * inventaire[j].setText("-----------------");
-         * }
-         * }
-         */
-
     }
 }

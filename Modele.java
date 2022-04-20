@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.*;
 
 public class Modele extends Observable {
@@ -142,6 +141,12 @@ public class Modele extends Observable {
     public void UtiliseObjet(int num, Joueur j) {
         objJoueur = j;
         objNumber = num;
+    }
+
+    public void Poubelle() {
+        if (objNumber >= 0 && objJoueur != null) {
+            objJoueur.removeItem(objNumber);
+        }
     }
 
     /* GETTERS */

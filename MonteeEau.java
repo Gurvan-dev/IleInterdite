@@ -1,6 +1,4 @@
 import java.awt.image.*;
-import javax.imageio.*;
-import java.io.*;
 
 public class MonteeEau extends Objet {
     public boolean autoUse() {

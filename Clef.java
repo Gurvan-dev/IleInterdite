@@ -1,7 +1,5 @@
 import java.util.*;
 import java.awt.image.*;
-import javax.imageio.*;
-import java.io.*;
 
 public class Clef extends Objet {
     public final CaseType type;
