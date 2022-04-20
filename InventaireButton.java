@@ -34,6 +34,7 @@ public class InventaireButton extends JButton implements Observer {
     protected void paintComponent(Graphics g) {
         super.repaint();
         Objet o = currentJoueur.getItem(objNumber);
+        /* Si pas d'objet : Dispose, sinon dessiner. */
         if (o == null) {
             g.clearRect(0, 0, this.getWidth(), this.getHeight());
             g.dispose();
@@ -44,7 +45,7 @@ public class InventaireButton extends JButton implements Observer {
                     img.getWidth(),
                     img.getHeight(), null);
         }
-        /* Si pas d'objet : Dispose, sinon dessiner. */
+
     }
 
     public void Update() {

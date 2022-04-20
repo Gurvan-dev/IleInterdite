@@ -15,6 +15,7 @@ public class CaseButton extends JButton {
     public CaseButton(Vector2 pos, Modele modele) {
         super();
         this.pos = pos;
+        this.setBorderPainted(false);
         this.modele = modele;
         img = new JPanel();
         img.setOpaque(false);
@@ -30,18 +31,25 @@ public class CaseButton extends JButton {
     }
 
     protected void paintComponent(Graphics g) {
-        super.repaint();
+        // super.repaint();
+        Graphics2D g2d = (Graphics2D) g;
         /* Couleur de la case */
         Color c = modele.plateau.GetCase(pos.x, pos.y).GetColor();
         if (c.getAlpha() == 0) { // La case a coulée.
             g.dispose();
             return;
         }
+
         g.setColor(c);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         /* Dessiner les pions sur la case... */
         ArrayList<Joueur> jList = modele.GetJoueursOnCase(pos);
+        if (jList.contains(modele.GetCurrentJoueur())) {
+            g2d.setStroke(new BasicStroke(Plateau.PLATEAU_SELECT_WIDTH));
+            g2d.setColor(Plateau.PLATEAU_SELECT_COULEUR);
+            g2d.drawRect(0, 0, this.getWidth(), this.getHeight());
+        }
         if (jList.size() > 0) { // ... Si il y a au moins un joueur sur la case
             int tailleDessin = VueMain.CASE_TAILLE / jList.size(); // La taille du dessin du pion est
                                                                    // proportionelle au nombre de pions sur
@@ -56,5 +64,6 @@ public class CaseButton extends JButton {
                         ImageLoader.pion1.getHeight(), null);
             }
         }
+
     }
 }

@@ -2,25 +2,29 @@
 
 ## Plateau
 
-- [.] Forme de plateau plus simpa qu'un simple carré tout nul
-- [.] Spawnpoint pour le plateau OU ALORS tlmd spawn sur l'héliport au choix
+- [.] Forme de plateau plus sympa qu'un simple carré tout nul
 
 ## Objets
 
-- [.] Gestion d'inventaire : Afficher sur VueInput la possibiltié de lacher les objets
+- [.] Pouvoir lacher les objets. Idée : Drag and drop sur la pioche ?
 - [.] Pouvoir échanger des items avec autre joueur sur la même case
 
 ## Graphismes
 
 - [.] Mieux gérer le cas ou plusieurs joueur sont sur la même case : Les placer en carré au lieu d'en ligne
 - [.] Mettre en avant quel pion est actuellement séléctionné
+- [.] Scale toute la fenêtre si nécéssaire
 
 ## Inputs
 
 - [.] Idée : On se déplace avec les fleches, on fait shift+une direction pour assécher une case voisine.
-- [.] Idée : On a les cartes qui sont affichée a droite, on les drag & drop sur une case pour les utiliser ? (On clique simplement dessus puis on clique sur la case sur laquelle on veut l'utiliser sinon)
-- [.] Faire des cases des boutons pour pouvoir cliquer dessus. Avoir un mode pour se déplacer en cliquant dessus
 - [.] Clique droit sur case pour l'assécher ?
+- [.] Pour donner une carte a un autre joueur, on glisse la carte vers l'inventaire de l'autre joueur et si il est a proximité, le transfert est effectué (Et si c'est actuellement au tour de l'autre joueur ect...)
+- [.] Pour jeter une carte, on prend une carte objet et on la met dans la pioche (A gauche)
+
+## Autre
+
+- [.] Menu principal et menu de victoire / fin
 
 ## Bugs
 

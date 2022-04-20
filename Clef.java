@@ -42,8 +42,7 @@ public class Clef extends Objet {
             for (Objet o : clefMemeType)
                 if (o != this) // This sera remove automatiquement a la fin quand on utiliser un objet
                     j.removeItem(o);
-            System.out.println("Artefact récupéré : " + type);
-            // TODO : j.addItem(artefact)
+            j.ajouteItem(new Artefact(type));
             return true;
         }
         return false;

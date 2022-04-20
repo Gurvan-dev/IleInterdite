@@ -28,7 +28,7 @@ public class VuePlateau extends JPanel implements Observer {
             this.add(Cases[i]);
         }
 
-        /* Finition */
+        /* Finitions */
         Vector2 tailleTotale = modele.plateau.taille.copy();
         tailleTotale.multiply(CASE_TAILLE_TOTALE);
         Dimension dim = new Dimension(tailleTotale.x, tailleTotale.y);
