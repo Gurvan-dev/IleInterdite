@@ -32,8 +32,14 @@ public class CaseButton extends JButton {
     protected void paintComponent(Graphics g) {
         super.repaint();
         /* Couleur de la case */
-        g.setColor(modele.plateau.GetCase(pos.x, pos.y).GetColor());
+        Color c = modele.plateau.GetCase(pos.x, pos.y).GetColor();
+        if (c.getAlpha() == 0) { // La case a coulée.
+            g.dispose();
+            return;
+        }
+        g.setColor(c);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
+
         /* Dessiner les pions sur la case... */
         ArrayList<Joueur> jList = modele.GetJoueursOnCase(pos);
         if (jList.size() > 0) { // ... Si il y a au moins un joueur sur la case

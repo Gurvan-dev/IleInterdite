@@ -23,6 +23,10 @@ public class Plateau {
         }
     }
 
+    public Vector2 GetSpawnPoint() {
+        return new Vector2(rand.nextInt(taille.x), rand.nextInt(taille.y));
+    }
+
     public Case GetCase(int x, int y) {
         int num = x + y * taille.y;
         return cases[num];

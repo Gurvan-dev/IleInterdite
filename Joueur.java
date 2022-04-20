@@ -29,6 +29,10 @@ public class Joueur {
             inventaire.remove(o);
     }
 
+    public Objet getItem(int objNumber) {
+        return objNumber >= 0 && objNumber < inventaire.size() ? inventaire.get(objNumber) : null;
+    }
+
     /*
      * Implémentation des actions possibles
      * Toutes les actions retournes un booléen vrai si l'action à pu être éfféctué
@@ -49,18 +53,39 @@ public class Joueur {
     }
 
     public boolean Move(Vector2 newPos) {
-        if (newPos.distance(this.pos) == 1) {
+        return Move(newPos, false);
+    }
+
+    /**
+     * @param newPos    : La position a laquelle déplacer le joueur
+     * @param forceMove : Si vrai, on va vérifier si la distance est correcte entre
+     *                  la nouvelle position du joueur et la position actuelle.
+     *                  Sinon, on va simplement déplacer le joueur sur la case (Si
+     *                  bien sûr la case n'est pas submergé).
+     *                  Si forcemove est vrai, on ne va également pas coûter
+     *                  d'action au Joueur.
+     * @return true if the
+     */
+    public boolean Move(Vector2 newPos, boolean forceMove) {
+        if (newPos.distance(this.pos) == 1 || forceMove) {
             if (!modele.plateau.InBounds(newPos))
                 return false;
             if (modele.plateau.GetCase(newPos.x, newPos.y).etat == CaseEtat.SUBMERGE)
                 return false;
             pos = newPos;
-            modele.EffectueAction(numJoueur, 1);
+            int coutAction = forceMove ? 0 : 1;
+            modele.EffectueAction(numJoueur, coutAction);
             return true;
         }
         return false;
     }
 
+    /**
+     * 
+     * @param objNumber Le numéro de l'objet dans l'inventaire a utilisé
+     * @param pos       La position a laquelle utiliser l'objet
+     * @return
+     */
     public boolean UtiliseObjet(int objNumber, Vector2 pos) {
         if (inventaire.size() <= objNumber || objNumber < 0)
             return false;

@@ -1,3 +1,7 @@
+import java.awt.image.*;
+import javax.imageio.*;
+import java.io.*;
+
 public class Artefact extends Objet {
     public final CaseType type;
 
@@ -15,5 +19,9 @@ public class Artefact extends Objet {
 
     public boolean utiliseObjet(Joueur j, Case c, Modele m) {
         return false; // On ne peut pas utiliser cet objet.
+    }
+
+    public BufferedImage toImage() {
+        return ImageLoader.objetPlaceholder;
     }
 }

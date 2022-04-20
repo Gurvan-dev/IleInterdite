@@ -2,12 +2,12 @@
 
 ## Plateau
 
-- [.] Gérer la montée des eaux
-- [.] Si un pion est sur une case qui est submergé, le sortir vers une direction aléatoire
-  
+- [.] Forme de plateau plus simpa qu'un simple carré tout nul
+- [.] Spawnpoint pour le plateau OU ALORS tlmd spawn sur l'héliport au choix
+
 ## Objets
 
-- [.] Gestion d'inventaire : Afficher sur VueInput la possibiltié d'utiliser/lacher les objets
+- [.] Gestion d'inventaire : Afficher sur VueInput la possibiltié de lacher les objets
 - [.] Pouvoir échanger des items avec autre joueur sur la même case
 
 ## Graphismes
@@ -21,3 +21,7 @@
 - [.] Idée : On a les cartes qui sont affichée a droite, on les drag & drop sur une case pour les utiliser ? (On clique simplement dessus puis on clique sur la case sur laquelle on veut l'utiliser sinon)
 - [.] Faire des cases des boutons pour pouvoir cliquer dessus. Avoir un mode pour se déplacer en cliquant dessus
 - [.] Clique droit sur case pour l'assécher ?
+
+## Bugs
+
+- [.] Le contour des boutons des cases devrait être invisible quand ils sont inondé.

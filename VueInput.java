@@ -13,7 +13,6 @@ public class VueInput extends JPanel implements Observer {
     private JCheckBox boutonAsseche;
     private JTextField joueurActuel;
     private JTextField actionRestante;
-    private JButton[] inventaire;
 
     public VueInput(Modele modele) {
         this.modele = modele;
@@ -30,7 +29,7 @@ public class VueInput extends JPanel implements Observer {
         boutonEndTurn = new JButton("End Turn");
         joueurActuel = new JTextField("");
         actionRestante = new JTextField("");
-        inventaire = new JButton[Modele.JOUEUR_TAILLE_INVENTAIRE];
+
         boutonAsseche = new JCheckBox("Asseche");
 
         boutonHaut.addActionListener(e -> {
@@ -56,14 +55,7 @@ public class VueInput extends JPanel implements Observer {
         actionRestante.setEditable(false);
         joueurActuel.setEditable(false);
         joueurActuel.setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
-        for (int i = 0; i < inventaire.length; i++) {
-            inventaire[i] = new JButton();
-            inventaire[i].setSize(VueMain.INPUT_WIDTH, CASE_TAILLE_TOTALE);
-            int num = i; // Obligatoire car Java n'est pas content sans
-            inventaire[i].addActionListener(e -> {
-                modele.UtiliseObjet(num);
-            });
-        }
+
         Update();
 
         /* On ajoute tout en composants */
@@ -73,9 +65,7 @@ public class VueInput extends JPanel implements Observer {
         this.add(boutonDroite);
         this.add(boutonEndTurn);
         this.add(boutonAsseche);
-        for (int i = 0; i < inventaire.length; i++) {
-            this.add(inventaire[i]);
-        }
+
         this.add(joueurActuel);
         this.add(actionRestante);
 
@@ -87,18 +77,6 @@ public class VueInput extends JPanel implements Observer {
     public void Update() {
         joueurActuel.setText("Joueur actuel : " + modele.GetCurrentPlayer());
         actionRestante.setText("Action restante : " + modele.GetNombreAction());
-        Joueur currentJoueur = modele.GetCurrentJoueur();
-        if (currentJoueur != null) {
-            int i = 0;
-            for (Objet o : currentJoueur.inventaire) {
-                inventaire[i].setText("" + o);
-                i++;
-            }
-            for (int j = i; j < inventaire.length; j++) {
-                inventaire[j].setText("---------------------");
-            }
-
-        }
     }
 
 }

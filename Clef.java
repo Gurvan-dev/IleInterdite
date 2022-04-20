@@ -1,4 +1,7 @@
 import java.util.*;
+import java.awt.image.*;
+import javax.imageio.*;
+import java.io.*;
 
 public class Clef extends Objet {
     public final CaseType type;
@@ -15,10 +18,15 @@ public class Clef extends Objet {
         return "Clef (" + type + ")";
     }
 
+    public BufferedImage toImage() {
+        return ImageLoader.objetPlaceholder;
+    }
+
     public boolean utiliseObjet(Joueur j, Case c, Modele m) {
-        System.out.print("Utilisation d'une clef de type " + type + " Sur une case de type " + c.type);
-        if (c.type != type)
+        System.out.println("Utilisation d'une clef de type " + type + " Sur une case de type " + c.type);
+        if (c.pos.distance(j.pos) > 0 || c.type != type)
             return false;
+
         System.out.println("Case de même type");
         ArrayList<Clef> clefMemeType = new ArrayList<Clef>();
         clefMemeType.add(this);

@@ -7,16 +7,16 @@ public class Modele extends Observable {
     static Vector2 PLATEAU_TAILLE = new Vector2(6, 6);
 
     /* PARAMETRE JOUEUR */
-    static int JOUEUR_NOMBRE = 4;
-    static int JOUEUR_NOMBRE_ACTION = 3;
-    static int JOUEUR_TAILLE_INVENTAIRE = 5;
+    static final int JOUEUR_NOMBRE = 4;
+    static final int JOUEUR_NOMBRE_ACTION = 3;
+    static final int JOUEUR_TAILLE_INVENTAIRE = 5;
 
     /* PARAMETRE PARTIE */
     static int PARTIE_NOMBRE_INONDATION = 3; // Nombre d'inondation a la fin de chaque tour
-    static int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
-    static boolean PARTIE_AUTO_END_TURN = true;
-    static int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
-    static int PARTIE_NIVEAU_EAU_MAX = 10;
+    static final int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
+    static final boolean PARTIE_AUTO_END_TURN = true;
+    static final int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
+    static final int PARTIE_NIVEAU_EAU_MAX = 10;
 
     /* PARAMETRE DECKS */
     static Integer[] DECK_TERRAIN = new Integer[] { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -25,7 +25,7 @@ public class Modele extends Observable {
             5, 5, 5,
             5, 5, 5, 5, 5, 5, 5 };
     static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.FEU), new Clef(CaseType.PIERRE),
-            new Clef(CaseType.TERRE), new Clef(CaseType.VENT), new MonteeEau() };
+            new Clef(CaseType.TERRE), new Clef(CaseType.VENT), new MonteeEau(), new Helicoptere(), new Helicoptere() };
 
     public final Plateau plateau;
     public final Joueur[] joueurs;
@@ -37,6 +37,7 @@ public class Modele extends Observable {
     private int actionRestante;
     private boolean asseche = false;
     private int objNumber = -1;
+    private Joueur objJoueur = null;
 
     private int niveauEauActuel = 2;
 
@@ -46,7 +47,7 @@ public class Modele extends Observable {
         itemDeck = new Deck<Objet>(DECK_ITEM);
         itemDeck.Melange();
         for (int i = 0; i < joueurs.length; i++)
-            joueurs[i] = new Joueur(this, JOUEUR_TAILLE_INVENTAIRE, Vector2.zero, i);
+            joueurs[i] = new Joueur(this, JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), i);
         niveauEauActuel = PARTIE_NOMBRE_INONDATION;
         EndTurn();
     }
@@ -56,7 +57,7 @@ public class Modele extends Observable {
 
         /* Ajout d'item au joueur qui vient de finir son tour */
         if (currentPlayer >= 0) // On n'ajoute pas d'Objets si le joueur est -1 (En début de partie)
-            for (int i = 0; i < niveauEauActuel; i++) {
+            for (int i = 0; i < PARTIE_NOMBRE_CARTE_PIOCHE; i++) {
                 Objet item = itemDeck.RetireTop();
                 if (item.autoUse()) {
                     item.utiliseObjet(joueurs[currentPlayer], plateau.GetCase(joueurs[currentPlayer].pos), this);
@@ -97,7 +98,6 @@ public class Modele extends Observable {
                 }
                 if (!reussite)
                     GameOver();
-
             }
 
         }
@@ -145,9 +145,11 @@ public class Modele extends Observable {
 
     // Cliqué sur une case
     public void Case(Vector2 pos) {
-        if (objNumber >= 0) {
-            if (!joueurs[currentPlayer].UtiliseObjet(objNumber, pos))
+        if (objNumber >= 0 && objJoueur != null) {
+            if (!objJoueur.UtiliseObjet(objNumber, pos)) {
                 objNumber = -1;
+                objJoueur = null;
+            }
         } else if (asseche) {
             joueurs[currentPlayer].Asseche(pos);
         } else {
@@ -161,8 +163,8 @@ public class Modele extends Observable {
     }
 
     // Cliqué sur le bouton pour utiliser l'objet numero num
-    public void UtiliseObjet(int num) {
-        System.out.println(num);
+    public void UtiliseObjet(int num, Joueur j) {
+        objJoueur = j;
         objNumber = num;
     }
 
@@ -177,6 +179,10 @@ public class Modele extends Observable {
 
     public Joueur GetCurrentJoueur() {
         return currentPlayer >= 0 ? joueurs[currentPlayer] : null;
+    }
+
+    public Joueur GetJoueur(int jNumber) {
+        return joueurs[jNumber];
     }
 
     public ArrayList<Joueur> GetJoueursOnCase(Vector2 pos) {

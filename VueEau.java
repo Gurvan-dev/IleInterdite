@@ -31,7 +31,7 @@ public class VueEau extends JPanel implements Observer {
         g.setColor(eauColor);
         float scale = (float) modele.GetNiveauEau() / (float) Modele.PARTIE_NIVEAU_EAU_MAX;
         if (scale > 0)
-            g.fillRect(0, 0, VueMain.EAU_WIDTH, (int) (height * scale));
+            g.fillRect(0, height - (int) (height * scale), VueMain.EAU_WIDTH, (int) (height * scale));
     }
 
     public void Update() {
