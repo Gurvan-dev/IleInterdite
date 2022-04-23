@@ -22,7 +22,7 @@ public class Modele extends Observable {
         itemDeck = new Deck<Objet>(GameSettings.DECK_ITEM);
         itemDeck.Melange();
         for (int i = 0; i < joueurs.length; i++)
-            joueurs[i] = new Joueur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), i);
+            joueurs[i] = new Ingenieur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), i);
         niveauEauActuel = GameSettings.PARTIE_NOMBRE_INONDATION;
         EndTurn();
     }
@@ -48,6 +48,7 @@ public class Modele extends Observable {
         /* On passe au joueur d'après */
         currentPlayer++;
         currentPlayer %= joueurs.length;
+        joueurs[currentPlayer].StartTurn();
         actionRestante = GameSettings.JOUEUR_NOMBRE_ACTION;
 
         notifyObservers();

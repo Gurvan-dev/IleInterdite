@@ -15,6 +15,10 @@ public class Joueur {
         this.pos = pos;
     }
 
+    public void StartTurn() {
+
+    }
+
     public boolean ajouteItem(Objet o) {
         if (inventaire.size() < tailleInventaire) {
             inventaire.add(o);

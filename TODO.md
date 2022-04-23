@@ -6,7 +6,7 @@
 
 ## Gameplay
 
-- [.] Rôles
+- [.] Rôles : Plongeur
 
 ## Graphismes
 
@@ -22,3 +22,14 @@
 
 - [.] GameOver quand héliport coule
 - [.] Menu principal et menu de victoire / fin
+- [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal
+
+## Bugs
+
+- [.] Les images de l'inventaire ne sont pas carrées
+- [.] Les scale des éléments du menu principal ne sont pas bien
+- [.] Ingénieur autoEndTurn alors que pas il peut freeAsseche
+
+## Idée
+
+- [.] Formes d'île : Carré, Rond, +, -

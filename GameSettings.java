@@ -6,16 +6,16 @@ public class GameSettings {
     static Vector2 PLATEAU_TAILLE = new Vector2(6, 6);
 
     /* PARAMETRE JOUEUR */
-    static final int JOUEUR_NOMBRE = 4;
-    static final int JOUEUR_NOMBRE_ACTION = 3;
-    static final int JOUEUR_TAILLE_INVENTAIRE = 5;
+    static int JOUEUR_NOMBRE = 4;
+    static int JOUEUR_NOMBRE_ACTION = 3;
+    static int JOUEUR_TAILLE_INVENTAIRE = 5;
 
     /* PARAMETRE PARTIE */
     static int PARTIE_NOMBRE_INONDATION = 3; // Nombre d'inondation a la fin de chaque tour
-    static final int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
-    static final boolean PARTIE_AUTO_END_TURN = true;
-    static final int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
-    static final int PARTIE_NIVEAU_EAU_MAX = 10;
+    static int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
+    static boolean PARTIE_AUTO_END_TURN = true;
+    static int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
+    static int PARTIE_NIVEAU_EAU_MAX = 10;
 
     /* PARAMETRE DECKS */
     static Integer[] DECK_TERRAIN = new Integer[] { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -40,6 +40,10 @@ public class GameSettings {
     static int EAU_WIDTH = 100; //
     static int OBJET_ESPACE = 10; // Espace entre chaque case d'objet
     static int OBJET_WIDTH = 125; // Taille de chaque case d'objet
+
+    /* PARAMETRE MAIN MENU */
+    static int MM_TAILLE_X = 750;
+    static int MM_TAILLE_Y = 500;
 
     /*
      * @desc Resize la fenêtre en multipliant la taille de tout les élements par

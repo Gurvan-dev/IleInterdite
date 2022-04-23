@@ -53,4 +53,8 @@ public class Vector2 {
     public int distance(Vector2 other) {
         return Math.abs((other.x - x)) + Math.abs(other.y - y);
     }
+
+    public int minDistance(Vector2 other) {
+        return Math.min(Math.abs(other.x - x), Math.abs(other.y - y));
+    }
 }
