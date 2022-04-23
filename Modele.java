@@ -29,7 +29,8 @@ public class Modele extends Observable {
 
     /* Gestion de la simulation */
     void EndTurn() {
-
+        objNumber = -1;
+        objJoueur = null;
         /* Ajout d'item au joueur qui vient de finir son tour */
         if (currentPlayer >= 0) // On n'ajoute pas d'Objets si le joueur est -1 (En début de partie)
             for (int i = 0; i < GameSettings.PARTIE_NOMBRE_CARTE_PIOCHE; i++) {
@@ -147,6 +148,11 @@ public class Modele extends Observable {
         if (objNumber >= 0 && objJoueur != null) {
             objJoueur.removeItem(objNumber);
         }
+    }
+
+    public void DonneObjet(Joueur joueur) {
+        if (objNumber >= 0 && objJoueur != null)
+            objJoueur.DonneObjet(objNumber, joueur);
     }
 
     /* GETTERS */

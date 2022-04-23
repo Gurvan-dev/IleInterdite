@@ -8,14 +8,9 @@
 
 - [.] Rôles
 
-## Objets
-
-- [.] Pouvoir échanger des items avec autre joueur sur la même case
-
 ## Graphismes
 
 - [.] Mieux gérer le cas ou plusieurs joueur sont sur la même case : Les placer en carré au lieu d'en ligne
-- [.] Mettre un minimumSize pour les texte d'info sur action restante et joueur en train de jouer, et ne pas oublier de faire un .pack pour l'appliquer.
 
 ## Inputs
 
@@ -25,4 +20,5 @@
 
 ## Autre
 
+- [.] GameOver quand héliport coule
 - [.] Menu principal et menu de victoire / fin

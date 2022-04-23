@@ -3,6 +3,7 @@ import javax.swing.*;
 
 public class VueInventaire extends JPanel implements Observer {
     Modele modele;
+    JButton donneObjetBoutton;
     InventaireButton[] inventaire;
     Joueur currentJoueur;
 
@@ -10,9 +11,19 @@ public class VueInventaire extends JPanel implements Observer {
         this.modele = modele;
         this.currentJoueur = currentJoueur;
         this.setLayout(
-                new GridLayout(GameSettings.JOUEUR_TAILLE_INVENTAIRE, 1, GameSettings.OBJET_ESPACE,
+                new GridLayout(GameSettings.JOUEUR_TAILLE_INVENTAIRE + 1, 1, GameSettings.OBJET_ESPACE,
                         GameSettings.OBJET_ESPACE));
         modele.addObserver(this);
+
+        /* DONNE OBJET BOUTTON */
+        donneObjetBoutton = new JButton();
+        donneObjetBoutton.addActionListener(e -> {
+            modele.DonneObjet(currentJoueur);
+        });
+        donneObjetBoutton.setSize(GameSettings.OBJET_WIDTH, GameSettings.OBJET_WIDTH);
+        this.add(donneObjetBoutton);
+
+        /* BOUTON D'INVENTAIRE */
 
         inventaire = new InventaireButton[GameSettings.JOUEUR_TAILLE_INVENTAIRE];
         for (int i = 0; i < inventaire.length; i++) {
