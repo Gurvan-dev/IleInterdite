@@ -67,7 +67,7 @@ public class Joueur {
      *                  bien sûr la case n'est pas submergé).
      *                  Si forcemove est vrai, on ne va également pas coûter
      *                  d'action au Joueur.
-     * @return true if the
+     * @return Vrai si le joueur a pu se déplacer a la position demandé
      */
     public boolean Move(Vector2 newPos, boolean forceMove) {
         if (newPos.distance(this.pos) == 1 || forceMove) {
@@ -102,7 +102,9 @@ public class Joueur {
     }
 
     public boolean DonneObjet(int objNumber, Joueur other) {
-        if (inventaire.size() <= objNumber || objNumber < 0 || !other.pos.equals(this.pos)
+        if (inventaire.size() <= objNumber
+                || objNumber < 0
+                || !other.pos.equals(this.pos)
                 || modele.GetNombreAction() <= 0
                 || other == this
                 || modele.GetCurrentJoueur() != this)
