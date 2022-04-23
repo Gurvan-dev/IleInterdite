@@ -44,7 +44,6 @@ public class Joueur {
      * Les actions sont responsable d'appeler le modèle avec la fonction
      * 'EffectueAction', avec le cout d'action correspondant
      */
-
     public boolean Asseche(Vector2 caseAssecher) {
         if (caseAssecher.distance(pos) <= 1) {
             if (modele.plateau.InBounds(caseAssecher)

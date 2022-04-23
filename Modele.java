@@ -144,12 +144,14 @@ public class Modele extends Observable {
         objNumber = num;
     }
 
+    // Jette l'objet séléctionné a la poubelle
     public void Poubelle() {
         if (objNumber >= 0 && objJoueur != null) {
             objJoueur.removeItem(objNumber);
         }
     }
 
+    // Donne l'objet séléctionné au joueur en parametre
     public void DonneObjet(Joueur joueur) {
         if (objNumber >= 0 && objJoueur != null)
             objJoueur.DonneObjet(objNumber, joueur);
