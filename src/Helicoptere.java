@@ -1,6 +1,4 @@
-
 import java.awt.image.*;
-import java.util.*;
 
 public class Helicoptere extends Objet {
     /*
