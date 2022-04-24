@@ -23,7 +23,7 @@ public class Clef extends Objet {
     }
 
     public boolean utiliseObjet(Joueur j, Case c, Modele m) {
-        if (c.pos.distance(j.pos) > 0 || c.type != type)
+        if (c.pos.distance(j.pos) > 0 || c.type != type || m.GetCurrentJoueur() != j || m.GetNombreAction() <= 0)
             return false;
 
         ArrayList<Clef> clefMemeType = new ArrayList<Clef>();
@@ -42,6 +42,7 @@ public class Clef extends Objet {
                 if (o != this) // This sera remove automatiquement a la fin quand on utiliser un objet
                     j.removeItem(o);
             j.ajouteItem(new Artefact(type));
+            m.EffectueAction(j.numJoueur, 1);
             return true;
         }
         return false;

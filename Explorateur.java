@@ -8,14 +8,13 @@ public class Explorateur extends Joueur {
 
     @Override
     public boolean Move(Vector2 newPos, boolean forceMove) {
-        if (newPos.minDistance(this.pos) == 1 || forceMove) {
+        if (newPos.distance(this.pos) == 1 || newPos.isDiag(this.pos) || forceMove) {
             if (!modele.plateau.InBounds(newPos))
                 return false;
             if (modele.plateau.GetCase(newPos.x, newPos.y).etat == CaseEtat.SUBMERGE)
                 return false;
 
             int coutAction = forceMove ? 0 : 1;
-            pos = newPos;
             if (modele.GetNombreAction() < coutAction)
                 return false;
             pos = newPos;

@@ -23,7 +23,6 @@
 
 ## Bugs
 
-- [.] Explorateur ne peut se déplacer qu'en diagonale pour l'instant
-- [.] Utiliser une clé ne coût actuellement pas d'action
 - [.] On peut se déplacer sous l'eau quand une case coule
-- [.] Parfois on coule mais on ne perd pas
+- [.] Y'a pas l'artefact choko
+- [.] Explorateur peut se déplacer gratos et de plusieurs cases en même temps
