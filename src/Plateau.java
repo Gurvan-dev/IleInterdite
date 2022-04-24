@@ -10,7 +10,7 @@ public class Plateau {
     private Deck<Integer> deck;
 
     public Plateau(Vector2 taille) {
-        this.deck = new Deck<Integer>(GameSettings.DECK_TERRAIN);
+        this.deck = new Deck<Integer>(GameSettings.DECK_TERRAIN, false);
         this.deck.Melange();
         this.taille = taille;
         cases = new Case[taille.x * taille.y];
