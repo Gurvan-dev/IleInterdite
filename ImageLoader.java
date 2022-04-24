@@ -84,6 +84,7 @@ public class ImageLoader {
             // LECTURE TERRAIN
 
             terrain_heliport = ImageIO.read(new File(filePath + "Terrain_Heliport.png"));
+            terrain_water_overlay = ImageIO.read(new File(filePath + "Terrain_Water_Overlay.png"));
 
             for (int i = 0; i < terrain_random.length; i++) {
                 terrain_random[i] = ImageIO.read(new File(filePath + "Terrain_Random" + (i + 1) + ".png"));

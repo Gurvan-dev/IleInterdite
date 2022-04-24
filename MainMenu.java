@@ -56,6 +56,7 @@ public class MainMenu {
 
         Modele modele = new Modele();
         VueMain vueMain = new VueMain(modele);
+
     }
 
 }

@@ -30,7 +30,7 @@ public class GameSettings {
             new SacSable(), new SacSable() };
 
     /* PARAMETRE AFFICHAGE PLATEAU */
-    static Color PLATEAU_COULEUR = Color.blue;
+    static Color PLATEAU_COULEUR = new Color(9, 168, 205);
     static Color PLATEAU_SELECT_COULEUR = Color.green; // La couleur pour mettre en avant la case ou le joueur
                                                        // qui joue actuellement se situe
     static int PLATEAU_SELECT_WIDTH = 20;
@@ -38,10 +38,11 @@ public class GameSettings {
     /* PARAMETRE VUE : CASE */
     static int CASE_TAILLE = 120; // Taille de chaque cases de terrain
     static int CASE_ESPACE = 5; // Espace entre les cases.
-    static int INPUT_WIDTH = 125; // Taille de la barre a droite ou il y a les boutons
+    static int INPUT_WIDTH = 90; // Taille de la barre a droite ou il y a les boutons
     static int EAU_WIDTH = 75; //
-    static int OBJET_ESPACE = 10; // Espace entre chaque case d'objet
-    static int OBJET_WIDTH = 100; // Taille de chaque case d'objet
+    static int OBJET_ESPACE = 5; // Espace entre chaque case d'objet
+    static int OBJET_WIDTH = 110; // Taille de chaque case d'objets
+    static float WATER_OVERLAY_OPACITY = 0.75f;
 
     /* PARAMETRE MAIN MENU */
     static int MM_TAILLE_X = 750;
