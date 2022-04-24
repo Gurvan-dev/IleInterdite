@@ -1,12 +1,16 @@
 import java.awt.*;
+import java.awt.image.*;
 
 public class Case {
 
     public final Vector2 pos;
     public CaseEtat etat;
     public final CaseType type;
+    private final int graphicsID;
 
     public Case(Vector2 pos, CaseType type) {
+        graphicsID = ImageLoader.getCaseID(type);
+        System.out.println(graphicsID);
         this.pos = pos;
         this.etat = CaseEtat.NORMAL;
         this.type = type;
@@ -64,5 +68,16 @@ public class Case {
                     Math.min((int) (c.getBlue() * 1.5), 255));
         }
         return c;
+    }
+
+    public BufferedImage GetImage() {
+        switch (type) {
+            case HELIPORT:
+                return ImageLoader.terrain_heliport;
+            case BISOUS:
+                return ImageLoader.terrain_temple[0][graphicsID];
+            default:
+                return ImageLoader.terrain_random[graphicsID];
+        }
     }
 }

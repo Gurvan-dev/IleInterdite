@@ -136,4 +136,8 @@ public class Joueur {
         return ImageLoader.personnage_placeholder_icon;
     }
 
+    public BufferedImage getPion() {
+        return ImageLoader.personnage_placeholder_pion;
+    }
+
 }

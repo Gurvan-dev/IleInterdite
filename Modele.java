@@ -17,12 +17,13 @@ public class Modele extends Observable {
     private int niveauEauActuel = 2;
 
     public Modele() {
+        newJoueurCount = randomizer.nextInt(5);
         plateau = new Plateau(GameSettings.PLATEAU_TAILLE);
         joueurs = new Joueur[GameSettings.JOUEUR_NOMBRE];
         itemDeck = new Deck<Objet>(GameSettings.DECK_ITEM);
         itemDeck.Melange();
         for (int i = 0; i < joueurs.length; i++)
-            joueurs[i] = new Explorateur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), i);
+            joueurs[i] = newJoueur(i);
         niveauEauActuel = GameSettings.PARTIE_NOMBRE_INONDATION;
         EndTurn();
     }
@@ -222,5 +223,23 @@ public class Modele extends Observable {
 
     public int GetObjNumber() {
         return objNumber;
+    }
+
+    static int newJoueurCount = 0;
+
+    private Joueur newJoueur(int jNumber) {
+        newJoueurCount = (newJoueurCount + 1) % 5;
+        switch (newJoueurCount) {
+            case 0:
+                return new Explorateur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
+            case 1:
+                return new Ingenieur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
+            case 2:
+                return new Messager(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
+            case 3:
+                return new Pilote(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
+            default:
+                return new Ingenieur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
+        }
     }
 }

@@ -26,4 +26,9 @@ public class Explorateur extends Joueur {
         return ImageLoader.personnage_explorateur_icone;
     }
 
+    @Override
+    public BufferedImage getPion() {
+        return ImageLoader.personnage_explorateur_pion;
+    }
+
 }

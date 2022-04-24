@@ -37,4 +37,9 @@ public class Pilote extends Joueur {
     public BufferedImage getIcon() {
         return ImageLoader.personnage_pilote_icone;
     }
+
+    @Override
+    public BufferedImage getPion() {
+        return ImageLoader.personnage_pilote_pion;
+    }
 }
