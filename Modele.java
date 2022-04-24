@@ -75,7 +75,7 @@ public class Modele extends Observable {
                     cur = (cur + 1) % 4;
                 }
                 if (!reussite)
-                    GameOver();
+                    EndGame(false);
             }
 
         }
@@ -97,7 +97,7 @@ public class Modele extends Observable {
             }
         }
         if (dejaEu.size() == GameSettings.PARTIE_NOMBRE_ARTEFACT_REQUIS) {
-            Bravo();
+            EndGame(true);
         }
     }
 
@@ -116,22 +116,16 @@ public class Modele extends Observable {
     public void MonteeEau() {
         niveauEauActuel++;
         if (niveauEauActuel >= GameSettings.PARTIE_NIVEAU_EAU_MAX)
-            GameOver();
+            EndGame(false);
         notifyObservers();
     }
 
-    /*
-     * Appelée quand la partie est terminée, les joueurs ont perdu
-     */
-    public void GameOver() {
+    /**
+     * @param won true si la partie a été gagnée, false sinon
+     **/
+    public void EndGame(boolean won) {
+        WindowManager.LaunchEndMenu(won);
         System.out.println("C'est perdu.");
-    }
-
-    /*
-     * Appelée quand la partie est terminée, les joueurs ont gagné
-     */
-    public void Bravo() {
-        System.out.println("Bravo!!!!!!!! bogoss");
     }
 
     /* Gestion d'input */

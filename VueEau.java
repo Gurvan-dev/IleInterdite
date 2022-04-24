@@ -4,7 +4,6 @@ import javax.swing.*;
 public class VueEau extends JPanel implements Observer {
 
     /* PARAMETRE VUE EAU */
-    static final Color eauColor = Color.BLUE;
     static final Color backgroundColor = Color.DARK_GRAY;
 
     private Modele modele;
@@ -23,7 +22,7 @@ public class VueEau extends JPanel implements Observer {
         super.paintComponent(g);
         g.setColor(backgroundColor);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        g.setColor(eauColor);
+        g.setColor(GameSettings.PLATEAU_COULEUR);
         float scale = (float) modele.GetNiveauEau() / (float) GameSettings.PARTIE_NIVEAU_EAU_MAX;
         if (scale > 0)
             g.fillRect(0, height - (int) (height * scale), GameSettings.EAU_WIDTH, (int) (height * scale));

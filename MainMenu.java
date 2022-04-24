@@ -14,6 +14,7 @@ public class MainMenu {
         frame = new JFrame();
         frame.setLayout(new FlowLayout());
         frame.setTitle("L'île interdite.");
+        WindowManager.openedWindow.add(frame);
 
         /* On crée les boutons et les panels */
         panel = new JPanel();
@@ -36,8 +37,10 @@ public class MainMenu {
         nbPlayerTitle.setEditable(false);
 
         panel.add(startButton);
+
         panel.add(nbPlayerTitle);
         panel.add(nbPlayerSlider);
+
         panel.add(scaleTitle);
         panel.add(scaleSlider);
 
@@ -49,13 +52,9 @@ public class MainMenu {
     }
 
     public void StartGame() {
-        frame.dispose();
-
         GameSettings.JOUEUR_NOMBRE = nbPlayerSlider.getValue();
         GameSettings.changeGameScale((float) scaleSlider.getValue() / 10f);
-
-        Modele modele = new Modele();
-        VueMain vueMain = new VueMain(modele);
+        WindowManager.LaunchGame();
     }
 
 }

@@ -41,6 +41,7 @@ public class VueMain implements Observer {
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        WindowManager.openedWindow.add(frame);
     }
 
     public void Update() {

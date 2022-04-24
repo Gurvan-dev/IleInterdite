@@ -33,27 +33,19 @@ public class CaseButton extends JButton {
         super.repaint();
 
         Graphics2D g2d = (Graphics2D) g;
-        /*
-         * Couleur de la case
-         * Color c = modele.plateau.GetCase(pos.x, pos.y).GetColor();
-         * if (c.getAlpha() == 0) { // La case a coulée.
-         * g.dispose();
-         * return;
-         * }
-         * g.setColor(c);
-         * g.fillRect(0, 0, this.getWidth(), this.getHeight());
-         */
-        if (modele.plateau.GetCase(pos.x, pos.y).etat == CaseEtat.SUBMERGE) {
+        Case thisCase = modele.plateau.GetCase(pos.x, pos.y);
+
+        /* DESSIN DU BACKGROUND */
+        if (thisCase.etat == CaseEtat.SUBMERGE) {
             g.dispose();
             return;
         }
 
-        BufferedImage caseGraphics = modele.plateau.GetCase(pos.x, pos.y).GetImage();
+        BufferedImage caseGraphics = thisCase.GetImage();
         g.drawImage(caseGraphics, 0, 0, GameSettings.CASE_TAILLE,
                 GameSettings.CASE_TAILLE, 0, 0,
                 caseGraphics.getWidth(),
                 caseGraphics.getHeight(), null);
-        // TODO : Draw water overlay here if INONDE
 
         /* Dessiner les pions sur la case... */
         ArrayList<Joueur> jList = modele.GetJoueursOnCase(pos);
@@ -64,8 +56,7 @@ public class CaseButton extends JButton {
         }
         if (jList.size() > 0) { // ... Si il y a au moins un joueur sur la case
             int tailleDessin = GameSettings.CASE_TAILLE / jList.size(); // La taille du dessin du pion est
-            // proportionelle au nombre de pions sur
-            // ce point
+            // proportionelle au nombre de pions sur ce point
             for (int i = 0; i < jList.size(); i++) { // On va placer tout les joueurs sur une même case en
                                                      // un seul coup
                 Vector2 posFinal = Vector2.zero.copy();
@@ -76,6 +67,17 @@ public class CaseButton extends JButton {
                         img.getWidth(),
                         img.getHeight(), null);
             }
+        }
+
+        // On dessine l'overlay d'eau si y'a de l'eau sur la case
+        if (thisCase.etat == CaseEtat.INONDE) {
+            BufferedImage waterOverlay = ImageLoader.terrain_water_overlay;
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, GameSettings.WATER_OVERLAY_OPACITY));
+            g.drawImage(waterOverlay, 0, 0, GameSettings.CASE_TAILLE,
+                    GameSettings.CASE_TAILLE, 0, 0,
+                    waterOverlay.getWidth(),
+                    waterOverlay.getHeight(), null);
+
         }
 
     }
