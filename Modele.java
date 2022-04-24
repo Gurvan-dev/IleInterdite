@@ -101,6 +101,8 @@ public class Modele extends Observable {
     }
 
     public void EffectueAction(int numJoueur, int coutAction) {
+        objJoueur = null;
+        objNumber = -1;
         if (coutAction <= actionRestante && numJoueur == currentPlayer) {
             actionRestante -= coutAction;
         }
@@ -169,6 +171,8 @@ public class Modele extends Observable {
     public void Poubelle() {
         if (objNumber >= 0 && objJoueur != null) {
             objJoueur.removeItem(objNumber);
+            objNumber = -1;
+            objJoueur = null;
         }
     }
 

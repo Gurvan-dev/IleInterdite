@@ -2,16 +2,16 @@
 
 ## Plateau
 
-- [.] Forme de plateau plus sympa qu'un simple carré tout nul
+- [.] Forme de plateau plus sympa qu'un simple carré tout nul : Carré, Rond, -, +
 
 ## Gameplay
 
 - [.] Rôles : Plongeur
-- [.] Artefacts
 
 ## Graphismes
 
 - [.] Mieux gérer le cas ou plusieurs joueur sont sur la même case : Les placer en carré au lieu d'en ligne
+- [.] Remplacer les couleur des cases par des graphismes avec overlay quand inondé
 
 ## Inputs
 
@@ -21,7 +21,7 @@
 
 ## Autre
 
-- [.] GameOver quand héliport coule
+- [.] GameOver quand héliport coule & Quand montée d'eau atteint le maximum
 - [.] Menu principal et menu de victoire / fin
 - [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal
 - [.] Montrer quel objet est actuellement séléctionné et c'est le tour de quel joueur a droite
@@ -30,11 +30,6 @@
 
 ## Bugs
 
-- [.] Les images de l'inventaire ne sont pas carrées
-- [.] Les scale des éléments du menu principal ne sont pas bien
-- [.] Ingénieur autoEndTurn alors que pas il peut freeAsseche
+- [.] Bouton start sur menu principal n'est pas centré
+- [.] Ingénieur autoEndTurn alors qu'il peut freeAsseche
 - [.] Si un pion est au bord du terrain il considère qu'il peut aller nul part
-
-## Idée
-
-- [.] Formes d'île : Carré, Rond, +, -
