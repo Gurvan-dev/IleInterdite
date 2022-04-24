@@ -36,10 +36,10 @@ public class GameSettings {
     static int PLATEAU_SELECT_WIDTH = 20;
 
     /* PARAMETRE VUE : CASE */
-    static int CASE_TAILLE = 100; // Taille de chaque cases de terrain
-    static int CASE_ESPACE = 10; // Espace entre les cases.
+    static int CASE_TAILLE = 120; // Taille de chaque cases de terrain
+    static int CASE_ESPACE = 5; // Espace entre les cases.
     static int INPUT_WIDTH = 125; // Taille de la barre a droite ou il y a les boutons
-    static int EAU_WIDTH = 100; //
+    static int EAU_WIDTH = 75; //
     static int OBJET_ESPACE = 10; // Espace entre chaque case d'objet
     static int OBJET_WIDTH = 100; // Taille de chaque case d'objet
 
