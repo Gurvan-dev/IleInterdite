@@ -27,3 +27,4 @@
 - [.] Si un pion est au bord du terrain il considère qu'il peut aller nul part parfois
 - [.] Explorateur ne peut se déplacer qu'en diagonale pour l'instant
 - [.] Utiliser une clé ne coût actuellement pas d'action
+- [.] On peut se déplacer sous l'eau quand une case coule
