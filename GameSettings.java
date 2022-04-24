@@ -16,6 +16,7 @@ public class GameSettings {
     static boolean PARTIE_AUTO_END_TURN = true;
     static int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
     static int PARTIE_NIVEAU_EAU_MAX = 10;
+    static int PARTIE_NOMBRE_ARTEFACT_REQUIS = 4;
 
     /* PARAMETRE DECKS */
     static Integer[] DECK_TERRAIN = new Integer[] { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,

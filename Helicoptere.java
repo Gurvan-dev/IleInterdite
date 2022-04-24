@@ -1,4 +1,5 @@
 import java.awt.image.*;
+import java.util.*;
 
 public class Helicoptere extends Objet {
     /*
@@ -16,8 +17,7 @@ public class Helicoptere extends Objet {
 
     public boolean utiliseObjet(Joueur j, Case c, Modele m) {
         if (c.type == CaseType.HELIPORT && m.GetNombreJoueurSurCase(c.pos) == GameSettings.JOUEUR_NOMBRE) {
-            // TODO : Regarder si tout les artefacts sont actuellement en la possession des
-            // joueurs
+            m.VerifieVictoire();
         } else {
             return j.Move(c.pos, true);
         }

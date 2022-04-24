@@ -80,6 +80,26 @@ public class Modele extends Observable {
         }
     }
 
+    /*
+     * Considère que tout les joueurs sont déjà sur la case héliport
+     */
+    void VerifieVictoire() {
+        ArrayList<CaseType> dejaEu = new ArrayList<CaseType>();
+        for (int i = 0; i < joueurs.length; i++) {
+            for (Objet o : joueurs[i].inventaire) {
+                if (o instanceof Clef) {
+                    Clef c = (Clef) o;
+                    if (!dejaEu.contains(c.type)) {
+                        dejaEu.add(c.type);
+                    }
+                }
+            }
+        }
+        if (dejaEu.size() == GameSettings.PARTIE_NOMBRE_ARTEFACT_REQUIS) {
+            Bravo();
+        }
+    }
+
     public void EffectueAction(int numJoueur, int coutAction) {
         if (coutAction <= actionRestante && numJoueur == currentPlayer) {
             actionRestante -= coutAction;

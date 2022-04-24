@@ -7,6 +7,7 @@
 ## Gameplay
 
 - [.] Rôles : Plongeur
+- [.] Artefacts
 
 ## Graphismes
 
@@ -23,6 +24,8 @@
 - [.] GameOver quand héliport coule
 - [.] Menu principal et menu de victoire / fin
 - [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal
+- [.] Montrer quel objet est actuellement séléctionné
+- [.] Distribuer les rôles aléatoirement et les afficher
 
 ## Bugs
 
