@@ -57,4 +57,10 @@ public class Vector2 {
     public int minDistance(Vector2 other) {
         return Math.min(Math.abs(other.x - x), Math.abs(other.y - y));
     }
+
+    public boolean isDiag(Vector2 other) {
+        int dX = Math.abs(other.x - x);
+        int dY = Math.abs(other.y - y);
+        return (dX == 1 && dY == 1);
+    }
 }
