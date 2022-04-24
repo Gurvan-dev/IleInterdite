@@ -24,8 +24,9 @@ public class GameSettings {
             5,
             5, 5, 5,
             5, 5, 5, 5, 5, 5, 5 };
-    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.FEU), new Clef(CaseType.PIERRE),
-            new Clef(CaseType.TERRE), new Clef(CaseType.VENT), new MonteeEau(), new Helicoptere(), new Helicoptere(),
+    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.BISOUS), new Clef(CaseType.PIERRE),
+            new Clef(CaseType.TERRE), new Clef(CaseType.CHOCOLAT), new MonteeEau(), new Helicoptere(),
+            new Helicoptere(),
             new SacSable(), new SacSable() };
 
     /* PARAMETRE AFFICHAGE PLATEAU */

@@ -4,8 +4,8 @@ import java.util.*;
 public enum CaseType {
     HELIPORT,
     NORMAL,
-    FEU,
-    VENT,
+    BISOUS,
+    CHOCOLAT,
     PIERRE,
     TERRE;
 
@@ -15,9 +15,9 @@ public enum CaseType {
         switch (t) {
             case HELIPORT:
                 return Color.RED;
-            case FEU:
+            case BISOUS:
                 return Color.ORANGE;
-            case VENT:
+            case CHOCOLAT:
                 return Color.LIGHT_GRAY;
             case PIERRE:
                 return Color.BLACK;
@@ -34,9 +34,9 @@ public enum CaseType {
             case 0:
                 return HELIPORT;
             case 1:
-                return FEU;
+                return BISOUS;
             case 2:
-                return VENT;
+                return CHOCOLAT;
             case 3:
                 return PIERRE;
             case 4:
@@ -50,9 +50,9 @@ public enum CaseType {
         switch (c) {
             case HELIPORT:
                 return 0;
-            case FEU:
+            case BISOUS:
                 return 1;
-            case VENT:
+            case CHOCOLAT:
                 return 2;
             case PIERRE:
                 return 3;

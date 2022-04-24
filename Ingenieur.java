@@ -44,4 +44,9 @@ public class Ingenieur extends Joueur {
         return ImageLoader.personnage_ingenieur_icone;
     }
 
+    @Override
+    public BufferedImage getPion() {
+        return ImageLoader.personnage_ingenieur_pion;
+    }
+
 }

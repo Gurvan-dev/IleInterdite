@@ -27,4 +27,9 @@ public class Messager extends Joueur {
         return ImageLoader.personnage_messager_icone;
     }
 
+    @Override
+    public BufferedImage getPion() {
+        return ImageLoader.personnage_messager_pion;
+    }
+
 }
