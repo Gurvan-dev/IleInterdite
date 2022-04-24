@@ -8,8 +8,9 @@ public class EndMenu {
     JPanel panel;
     JButton startButton;
     JLabel gagneOuQuoi;
+    JTextField msgField;
 
-    public EndMenu(boolean won) {
+    public EndMenu(boolean won, String msg) {
         /* Fenêtre. */
         frame = new JFrame();
         frame.setLayout(new FlowLayout());
@@ -27,6 +28,12 @@ public class EndMenu {
         });
 
         panel.add(gagneOuQuoi);
+        if (msg != "") {
+            msgField = new JTextField(msg);
+            msgField.setEditable(false);
+            panel.add(msgField);
+        }
+
         panel.add(startButton);
 
         /* Finition fenêtre */
@@ -34,6 +41,10 @@ public class EndMenu {
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    public EndMenu(boolean won) {
+        this(won, "");
     }
 
 }

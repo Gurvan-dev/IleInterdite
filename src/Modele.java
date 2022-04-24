@@ -57,7 +57,7 @@ public class Modele extends Observable {
 
         /* Si l'héliport a coulé, c'est fini. */
         if (plateau.GetCase(heliportPos).etat == CaseEtat.SUBMERGE) {
-            EndGame(false);
+            EndGame(false, "L'héliport a coulé.");
         }
 
         /* On passe au joueur d'après */
@@ -94,7 +94,7 @@ public class Modele extends Observable {
                     cur = (cur + 1) % 4;
                 }
                 if (!reussite)
-                    EndGame(false);
+                    EndGame(false, "Le joueur " + j.numJoueur + " a coulé.");
             }
 
         }
@@ -135,15 +135,21 @@ public class Modele extends Observable {
     public void MonteeEau() {
         niveauEauActuel++;
         if (niveauEauActuel >= GameSettings.PARTIE_NIVEAU_EAU_MAX)
-            EndGame(false);
+            EndGame(false, "L'eau est montée trop haute.");
         notifyObservers();
+    }
+
+    public void EndGame(boolean won) {
+        EndGame(won, "");
     }
 
     /**
      * @param won true si la partie a été gagnée, false sinon
+     * @param msg Message a afficher sur le panel de fin, par exemple la raison du
+     *            GameOver.
      **/
-    public void EndGame(boolean won) {
-        WindowManager.LaunchEndMenu(won);
+    public void EndGame(boolean won, String msg) {
+        WindowManager.LaunchEndMenu(won, msg);
     }
 
     /* Gestion d'input */

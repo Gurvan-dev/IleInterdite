@@ -24,8 +24,12 @@ public class WindowManager {
     }
 
     static void LaunchEndMenu(boolean won) {
+        LaunchEndMenu(won, "");
+    }
+
+    static void LaunchEndMenu(boolean won, String msg) {
         closeAll();
-        EndMenu em = new EndMenu(won);
+        EndMenu em = new EndMenu(won, msg);
     }
 
 }
