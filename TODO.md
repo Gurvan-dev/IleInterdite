@@ -20,9 +20,3 @@
 
 - [.] GameOver quand héliport coule & Quand montée d'eau atteint le maximum
 - [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal ?
-
-## Bugs
-
-- [.] On peut se déplacer sous l'eau quand une case coule
-- [.] Y'a pas l'artefact choko
-- [.] Explorateur peut se déplacer gratos et de plusieurs cases en même temps

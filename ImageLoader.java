@@ -12,7 +12,7 @@ public class ImageLoader {
 
     /* Terrain */
     static BufferedImage[][] terrain_temple = new BufferedImage[4][2];
-    static BufferedImage[] terrain_random = new BufferedImage[8];
+    static BufferedImage[] terrain_random = new BufferedImage[11];
     static BufferedImage terrain_heliport;
     static BufferedImage terrain_water_overlay;
     static int random_count;
