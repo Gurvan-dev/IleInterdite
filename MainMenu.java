@@ -8,6 +8,7 @@ public class MainMenu {
     JButton startButton;
     JSlider scaleSlider, nbPlayerSlider, difficulteSlider;
     JTextField scaleTitle, nbPlayerTitle, difficulteTitle;
+    JLabel mainTitle;
 
     public MainMenu() {
         /* Fenêtre. */
@@ -43,6 +44,9 @@ public class MainMenu {
         difficulteTitle = new JTextField("Difficulté");
         difficulteTitle.setEditable(false);
 
+        mainTitle = new JLabel(new ImageIcon(ImageLoader.mainTitle));
+
+        panel.add(mainTitle);
         panel.add(startButton);
 
         panel.add(nbPlayerTitle);

@@ -1,12 +1,13 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.image.*;
 
 public class EndMenu {
 
     JFrame frame;
     JPanel panel;
     JButton startButton;
-    JTextField gagneOuQuoi;
+    JLabel gagneOuQuoi;
 
     public EndMenu(boolean won) {
         /* Fenêtre. */
@@ -19,10 +20,8 @@ public class EndMenu {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         startButton = new JButton("Retour menu principal");
-        String txt = won ? "Mon zin tu as gagné" : "échec critique : Tu as perdu";
-        gagneOuQuoi = new JTextField(txt);
-        gagneOuQuoi.setEditable(false);
-
+        BufferedImage resultImage = won ? ImageLoader.bravo : ImageLoader.pasbravo;
+        gagneOuQuoi = new JLabel(new ImageIcon(resultImage));
         startButton.addActionListener(e -> {
             WindowManager.LaunchMainMenu();
         });

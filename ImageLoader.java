@@ -6,6 +6,10 @@ public class ImageLoader {
 
     static BufferedImage pion1;
 
+    /* UI */
+    static BufferedImage bravo, pasbravo;
+    static BufferedImage mainTitle;
+
     /* Terrain */
     static BufferedImage[][] terrain_temple = new BufferedImage[4][2];
     static BufferedImage[] terrain_random = new BufferedImage[8];
@@ -96,6 +100,12 @@ public class ImageLoader {
                             .read(new File(filePath + "Terrain_Temple" + (i + 1) + "_" + (j + 1) + ".png"));
                 }
             }
+
+            // LECTURE UI
+
+            bravo = ImageIO.read(new File(filePath + "Bravo.png"));
+            pasbravo = ImageIO.read(new File(filePath + "PasBravo.png"));
+            mainTitle = ImageIO.read(new File(filePath + "MainMenu_Logo.png"));
 
         } catch (IOException e) {
             System.out.println("Erreur lors du chargement des images.");

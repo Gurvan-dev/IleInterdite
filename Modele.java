@@ -76,14 +76,13 @@ public class Modele extends Observable {
                 while (cur != first && !reussite) {
                     Vector2 newPos = j.pos.copy();
                     newPos.plus(Vector2.FromDir(Dir.FromInt(cur)));
-                    if (plateau.GetCase(newPos).etat != CaseEtat.SUBMERGE && j.Move(newPos, true)) // On revérifie ici
-                                                                                                   // si l'état n'est
-                                                                                                   // pas submergé car
-                                                                                                   // le plongeur
-                                                                                                   // pourrait se
-                                                                                                   // déplacer quand
-                                                                                                   // même sinon
+                    // On revérifie ici si l'état n'estpas submergé car le plongeurpourrait se
+                    // déplacer quand même sinon
+                    if (plateau.InBounds(newPos)
+                            && plateau.GetCase(newPos).etat != CaseEtat.SUBMERGE
+                            && j.Move(newPos, true)) {
                         reussite = true;
+                    }
                     cur = (cur + 1) % 4;
                 }
                 if (!reussite)
@@ -137,7 +136,6 @@ public class Modele extends Observable {
      **/
     public void EndGame(boolean won) {
         WindowManager.LaunchEndMenu(won);
-        System.out.println("C'est perdu.");
     }
 
     /* Gestion d'input */
