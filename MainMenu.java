@@ -6,8 +6,8 @@ public class MainMenu {
     JFrame frame;
     JPanel panel;
     JButton startButton;
-    JSlider scaleSlider, nbPlayerSlider;
-    JTextField scaleTitle, nbPlayerTitle;
+    JSlider scaleSlider, nbPlayerSlider, difficulteSlider;
+    JTextField scaleTitle, nbPlayerTitle, difficulteTitle;
 
     public MainMenu() {
         /* Fenêtre. */
@@ -22,6 +22,7 @@ public class MainMenu {
         startButton = new JButton("Start Game");
         scaleSlider = new JSlider(5, 15);
         nbPlayerSlider = new JSlider(1, 4, GameSettings.JOUEUR_NOMBRE);
+        difficulteSlider = new JSlider(1, 4, GameSettings.PARTIE_NOMBRE_INONDATION);
 
         startButton.addActionListener(e -> {
             StartGame();
@@ -31,10 +32,16 @@ public class MainMenu {
         nbPlayerSlider.setPaintTicks(true);
         nbPlayerSlider.setSnapToTicks(true);
 
+        difficulteSlider.setMinorTickSpacing(1);
+        difficulteSlider.setPaintTicks(true);
+        difficulteSlider.setSnapToTicks(true);
+
         scaleTitle = new JTextField("Scale du Jeu");
         scaleTitle.setEditable(false);
         nbPlayerTitle = new JTextField("Nombre de joueurs");
         nbPlayerTitle.setEditable(false);
+        difficulteTitle = new JTextField("Difficulté");
+        difficulteTitle.setEditable(false);
 
         panel.add(startButton);
 
@@ -43,6 +50,9 @@ public class MainMenu {
 
         panel.add(scaleTitle);
         panel.add(scaleSlider);
+
+        panel.add(difficulteTitle);
+        panel.add(difficulteSlider);
 
         /* Finition fenêtre */
         frame.add(panel);
@@ -53,6 +63,7 @@ public class MainMenu {
 
     public void StartGame() {
         GameSettings.JOUEUR_NOMBRE = nbPlayerSlider.getValue();
+        GameSettings.PARTIE_NOMBRE_INONDATION = difficulteSlider.getValue();
         GameSettings.changeGameScale((float) scaleSlider.getValue() / 10f);
         WindowManager.LaunchGame();
     }

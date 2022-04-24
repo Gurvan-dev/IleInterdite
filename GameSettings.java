@@ -24,10 +24,44 @@ public class GameSettings {
             5,
             5, 5, 5,
             5, 5, 5, 5, 5, 5, 5 };
-    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.BISOUS), new Clef(CaseType.GEOMETRIQUE),
-            new Clef(CaseType.ROYAL), new Clef(CaseType.CHOCOLAT), new MonteeEau(), new Helicoptere(),
+
+    /*
+     * Le deck item actuel représente fidèlement le jeu de base a savoir qu'il est
+     * composé de 28 cartes avec:
+     * - 5 pour chacune des 4 trésors
+     * - 3 cartes montée des eaux
+     * - 3 cartes Hélicoptère
+     * - 2 cartes sac de sable
+     */
+    static Objet[] DECK_ITEM = new Objet[] {
+            new Clef(CaseType.BISOUS),
+            new Clef(CaseType.BISOUS),
+            new Clef(CaseType.BISOUS),
+            new Clef(CaseType.BISOUS),
+            new Clef(CaseType.BISOUS),
+            new Clef(CaseType.GEOMETRIQUE),
+            new Clef(CaseType.GEOMETRIQUE),
+            new Clef(CaseType.GEOMETRIQUE),
+            new Clef(CaseType.GEOMETRIQUE),
+            new Clef(CaseType.GEOMETRIQUE),
+            new Clef(CaseType.ROYAL),
+            new Clef(CaseType.ROYAL),
+            new Clef(CaseType.ROYAL),
+            new Clef(CaseType.ROYAL),
+            new Clef(CaseType.ROYAL),
+            new Clef(CaseType.CHOCOLAT),
+            new Clef(CaseType.CHOCOLAT),
+            new Clef(CaseType.CHOCOLAT),
+            new Clef(CaseType.CHOCOLAT),
+            new Clef(CaseType.CHOCOLAT),
+            new MonteeEau(),
+            new MonteeEau(),
+            new MonteeEau(),
             new Helicoptere(),
-            new SacSable(), new SacSable() };
+            new Helicoptere(),
+            new Helicoptere(),
+            new SacSable(),
+            new SacSable() };
 
     /* PARAMETRE AFFICHAGE PLATEAU */
     static Color PLATEAU_COULEUR = new Color(9, 168, 205);
