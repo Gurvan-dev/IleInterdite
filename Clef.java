@@ -23,11 +23,9 @@ public class Clef extends Objet {
     }
 
     public boolean utiliseObjet(Joueur j, Case c, Modele m) {
-        System.out.println("Utilisation d'une clef de type " + type + " Sur une case de type " + c.type);
         if (c.pos.distance(j.pos) > 0 || c.type != type)
             return false;
 
-        System.out.println("Case de même type");
         ArrayList<Clef> clefMemeType = new ArrayList<Clef>();
         clefMemeType.add(this);
         for (Objet o : j.inventaire) {

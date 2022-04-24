@@ -211,4 +211,12 @@ public class Modele extends Observable {
     public int GetNiveauEau() {
         return niveauEauActuel;
     }
+
+    public Joueur GetObjJoueur() {
+        return objJoueur;
+    }
+
+    public int GetObjNumber() {
+        return objNumber;
+    }
 }

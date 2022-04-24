@@ -6,6 +6,11 @@ public class ImageLoader {
 
     static BufferedImage pion1;
 
+    /* Terrain */
+    static BufferedImage[] terrain_temple = new BufferedImage[1];
+    static BufferedImage[] terrain_random = new BufferedImage[1];
+    static BufferedImage terrain_water_overlay;
+
     /* Objets */
     static BufferedImage objet_placeholder;
     static BufferedImage objet_montee_eau;
@@ -46,6 +51,15 @@ public class ImageLoader {
             personnage_messager_icone = ImageIO.read(new File(filePath + "Personnage_Messager_Icon.png"));
             personnage_pilote_icone = ImageIO.read(new File(filePath + "Personnage_Pilote_Icon.png"));
             personnage_plongeur_icone = ImageIO.read(new File(filePath + "Personnage_Plongeur_Icon.png"));
+
+            // LECTURE TERRAIN
+            for (int i = 0; i < terrain_random.length; i++) {
+                terrain_random[i] = ImageIO.read(new File(filePath + "Terrain_Random" + (i + 1) + ".png"));
+            }
+
+            for (int i = 0; i < terrain_temple.length; i++) {
+                terrain_temple[i] = ImageIO.read(new File(filePath + "Terrain_Temple" + (i + 1) + ".png"));
+            }
 
         } catch (IOException e) {
             System.out.println("Erreur lors du chargement des images.");

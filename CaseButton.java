@@ -38,7 +38,6 @@ public class CaseButton extends JButton {
             g.dispose();
             return;
         }
-
         g.setColor(c);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 

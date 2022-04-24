@@ -12,8 +12,10 @@ public class InventaireButton extends JButton implements Observer {
         super();
         this.modele = modele;
         modele.addObserver(this);
+
         this.currentJoueur = currentJoueur;
         this.objNumber = objNumber;
+        this.setBorderPainted(false);
         img = new JPanel();
         img.setOpaque(false);
         img.setPreferredSize(this.getSize());
@@ -40,6 +42,12 @@ public class InventaireButton extends JButton implements Observer {
                     GameSettings.OBJET_WIDTH, 0, 0,
                     img.getWidth(),
                     img.getHeight(), null);
+            Graphics2D g2d = (Graphics2D) g;
+            if (modele.GetObjJoueur() == currentJoueur && modele.GetObjNumber() == objNumber) {
+                g2d.setStroke(new BasicStroke(GameSettings.PLATEAU_SELECT_WIDTH));
+                g2d.setColor(GameSettings.PLATEAU_SELECT_COULEUR);
+                g2d.drawRect(0, 0, this.getWidth(), this.getHeight());
+            }
         }
 
     }
