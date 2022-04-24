@@ -33,7 +33,7 @@ public class GameSettings {
     static Color PLATEAU_COULEUR = new Color(9, 168, 205);
     static Color PLATEAU_SELECT_COULEUR = Color.green; // La couleur pour mettre en avant la case ou le joueur
                                                        // qui joue actuellement se situe
-    static int PLATEAU_SELECT_WIDTH = 20;
+    static int PLATEAU_SELECT_WIDTH = 15;
 
     /* PARAMETRE VUE : CASE */
     static int CASE_TAILLE = 120; // Taille de chaque cases de terrain

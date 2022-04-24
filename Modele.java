@@ -76,7 +76,13 @@ public class Modele extends Observable {
                 while (cur != first && !reussite) {
                     Vector2 newPos = j.pos.copy();
                     newPos.plus(Vector2.FromDir(Dir.FromInt(cur)));
-                    if (j.Move(newPos))
+                    if (plateau.GetCase(newPos).etat != CaseEtat.SUBMERGE && j.Move(newPos, true)) // On revérifie ici
+                                                                                                   // si l'état n'est
+                                                                                                   // pas submergé car
+                                                                                                   // le plongeur
+                                                                                                   // pourrait se
+                                                                                                   // déplacer quand
+                                                                                                   // même sinon
                         reussite = true;
                     cur = (cur + 1) % 4;
                 }
