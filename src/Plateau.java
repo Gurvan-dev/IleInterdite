@@ -55,4 +55,15 @@ public class Plateau {
         return new Vector2(x, y);
     }
 
+    public Vector2 getHeliportPos() {
+        for (int x = 0; x < taille.x; x++) {
+            for (int y = 0; y < taille.y; y++) {
+                if (GetCase(x, y).type == CaseType.HELIPORT) {
+                    return new Vector2(x, y);
+                }
+            }
+        }
+        return Vector2.zero;
+    }
+
 }

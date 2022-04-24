@@ -15,10 +15,12 @@ public class Modele extends Observable {
     private Joueur objJoueur = null;
 
     private int niveauEauActuel = 2;
+    private final Vector2 heliportPos;
 
     public Modele() {
         newJoueurCount = randomizer.nextInt(5);
         plateau = new Plateau(GameSettings.PLATEAU_TAILLE);
+        heliportPos = plateau.getHeliportPos();
         joueurs = new Joueur[GameSettings.JOUEUR_NOMBRE];
         itemDeck = new Deck<Objet>(GameSettings.DECK_ITEM);
         itemDeck.Melange();
@@ -35,7 +37,8 @@ public class Modele extends Observable {
             if (plateau.GetCase(joueurs[i].pos).etat == CaseEtat.SUBMERGE) // Pour éviter qu'on puisse finir le tour
                                                                            // avec le plongeur sous l'eau
                 return;
-
+        // On réinitialise l'utilisation d'objet entre les tours pour éviter de
+        // missclick.
         objNumber = -1;
         objJoueur = null;
         /* Ajout d'item au joueur qui vient de finir son tour */
@@ -51,6 +54,11 @@ public class Modele extends Observable {
 
         /* Inondation du terrain */
         Inonde();
+
+        /* Si l'héliport a coulé, c'est fini. */
+        if (plateau.GetCase(heliportPos).etat == CaseEtat.SUBMERGE) {
+            EndGame(false);
+        }
 
         /* On passe au joueur d'après */
         currentPlayer++;

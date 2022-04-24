@@ -4,7 +4,6 @@ public class Main {
         GameSettings.changeGameScale(1.3f);
         ImageLoader.Setup();
         WindowManager.LaunchMainMenu();
-
     }
 
 }
