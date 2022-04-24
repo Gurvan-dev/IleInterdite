@@ -1,3 +1,4 @@
+import java.awt.*;
 import javax.swing.*;
 
 public class VuePioche extends JPanel {
@@ -9,7 +10,12 @@ public class VuePioche extends JPanel {
     public VuePioche(Modele modele) {
         super();
         this.modele = modele;
-        poubelle = new JButton("Poubelle");
+
+        poubelle = new JButton(new ImageIcon(ImageLoader.poubelle));
+        poubelle.setFocusable(false);
+        poubelle.setOpaque(false);
+        poubelle.setBorderPainted(false);
+        poubelle.setPreferredSize(new Dimension(100, 100));
         poubelle.addActionListener(e -> {
             modele.Poubelle();
         });

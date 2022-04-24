@@ -56,6 +56,7 @@ public class Joueur {
     public boolean Asseche(Vector2 caseAssecher) {
         if (caseAssecher.distance(pos) <= 1) {
             if (modele.plateau.InBounds(caseAssecher)
+                    && modele.GetNombreAction() > 0
                     && modele.plateau.GetCase(caseAssecher.x, caseAssecher.y).Asseche()) {
                 modele.EffectueAction(numJoueur, 1);
                 return true;

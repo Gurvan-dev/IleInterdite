@@ -9,6 +9,7 @@ public class ImageLoader {
     /* UI */
     static BufferedImage bravo, pasbravo;
     static BufferedImage mainTitle;
+    static BufferedImage eclair, poubelle;
 
     /* Terrain */
     static BufferedImage[][] terrain_temple = new BufferedImage[4][2];
@@ -106,6 +107,8 @@ public class ImageLoader {
             bravo = ImageIO.read(new File(filePath + "Bravo.png"));
             pasbravo = ImageIO.read(new File(filePath + "PasBravo.png"));
             mainTitle = ImageIO.read(new File(filePath + "MainMenu_Logo.png"));
+            eclair = ImageIO.read(new File(filePath + "UI_Eclair.png"));
+            poubelle = ImageIO.read(new File(filePath + "UI_Trashcan.png"));
 
         } catch (IOException e) {
             System.out.println("Erreur lors du chargement des images.");
