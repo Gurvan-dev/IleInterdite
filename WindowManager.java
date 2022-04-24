@@ -23,11 +23,9 @@ public class WindowManager {
         VueMain vueMain = new VueMain(modele);
     }
 
-    static void LaunchWinMenu() {
-
+    static void LaunchEndMenu(boolean won) {
+        closeAll();
+        EndMenu em = new EndMenu(won);
     }
 
-    static void LaunchLooseMenu() {
-
-    }
 }
