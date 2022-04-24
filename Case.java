@@ -10,7 +10,6 @@ public class Case {
 
     public Case(Vector2 pos, CaseType type) {
         graphicsID = ImageLoader.getCaseID(type);
-        System.out.println(graphicsID);
         this.pos = pos;
         this.etat = CaseEtat.NORMAL;
         this.type = type;
