@@ -58,23 +58,18 @@ public class Case {
         }
     }
 
-    public Color GetColor() {
-        if (this.etat == CaseEtat.SUBMERGE) // On renvoie une couleur transparente
-            return new Color(0, 0, 0, 0);
-        Color c = CaseType.colorFromEnum(type);
-        if (this.etat == CaseEtat.INONDE) {
-            c = new Color((int) (c.getRed() * 0.5), (int) (c.getGreen() * 0.5),
-                    Math.min((int) (c.getBlue() * 1.5), 255));
-        }
-        return c;
-    }
-
     public BufferedImage GetImage() {
         switch (type) {
             case HELIPORT:
                 return ImageLoader.terrain_heliport;
             case BISOUS:
                 return ImageLoader.terrain_temple[0][graphicsID];
+            case CHOCOLAT:
+                return ImageLoader.terrain_temple[1][graphicsID];
+            case ROYAL:
+                return ImageLoader.terrain_temple[2][graphicsID];
+            case GEOMETRIQUE:
+                return ImageLoader.terrain_temple[3][graphicsID];
             default:
                 return ImageLoader.terrain_random[graphicsID];
         }

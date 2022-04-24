@@ -25,8 +25,11 @@ public class Pilote extends Joueur {
                 return false;
             if (modele.plateau.GetCase(newPos.x, newPos.y).etat == CaseEtat.SUBMERGE)
                 return false;
-            pos = newPos;
+
             int coutAction = forceMove ? 0 : 1;
+            if (modele.GetNombreAction() < coutAction)
+                return false;
+            pos = newPos;
             modele.EffectueAction(numJoueur, coutAction);
             return true;
         }

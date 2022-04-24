@@ -30,6 +30,12 @@ public class Modele extends Observable {
 
     /* Gestion de la simulation */
     void EndTurn() {
+
+        for (int i = 0; i < joueurs.length; i++)
+            if (plateau.GetCase(joueurs[i].pos).etat == CaseEtat.SUBMERGE) // Pour éviter qu'on puisse finir le tour
+                                                                           // avec le plongeur sous l'eau
+                return;
+
         objNumber = -1;
         objJoueur = null;
         /* Ajout d'item au joueur qui vient de finir son tour */
@@ -232,6 +238,8 @@ public class Modele extends Observable {
                 return new Messager(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
             case 3:
                 return new Pilote(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
+            case 4:
+                return new Plongeur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
             default:
                 return new Ingenieur(this, GameSettings.JOUEUR_TAILLE_INVENTAIRE, plateau.GetSpawnPoint(), jNumber);
         }

@@ -6,28 +6,10 @@ public enum CaseType {
     NORMAL,
     BISOUS,
     CHOCOLAT,
-    PIERRE,
-    TERRE;
+    ROYAL,
+    GEOMETRIQUE;
 
     private static Random rand = new Random();
-
-    public static Color colorFromEnum(CaseType t) {
-        switch (t) {
-            case HELIPORT:
-                return Color.RED;
-            case BISOUS:
-                return Color.ORANGE;
-            case CHOCOLAT:
-                return Color.LIGHT_GRAY;
-            case PIERRE:
-                return Color.BLACK;
-            case TERRE:
-                return Color.darkGray;
-            default: // Case NORMAL
-                return Color.WHITE;
-
-        }
-    }
 
     public static CaseType FromInt(int i) {
         switch (i) {
@@ -38,9 +20,9 @@ public enum CaseType {
             case 2:
                 return CHOCOLAT;
             case 3:
-                return PIERRE;
+                return ROYAL;
             case 4:
-                return TERRE;
+                return GEOMETRIQUE;
             default:
                 return NORMAL;
         }
@@ -54,9 +36,9 @@ public enum CaseType {
                 return 1;
             case CHOCOLAT:
                 return 2;
-            case PIERRE:
+            case ROYAL:
                 return 3;
-            case TERRE:
+            case GEOMETRIQUE:
                 return 4;
             default:
                 return 5;

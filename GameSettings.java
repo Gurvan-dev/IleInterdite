@@ -13,7 +13,7 @@ public class GameSettings {
     /* PARAMETRE PARTIE */
     static int PARTIE_NOMBRE_INONDATION = 3; // Nombre d'inondation a la fin de chaque tour
     static int PARTIE_NOMBRE_CARTE_PIOCHE = 2;
-    static boolean PARTIE_AUTO_END_TURN = true;
+    static boolean PARTIE_AUTO_END_TURN = false;
     static int PARTIE_NOMBRE_CLEF_POUR_ARTEFACT = 1;
     static int PARTIE_NIVEAU_EAU_MAX = 10;
     static int PARTIE_NOMBRE_ARTEFACT_REQUIS = 4;
@@ -24,8 +24,8 @@ public class GameSettings {
             5,
             5, 5, 5,
             5, 5, 5, 5, 5, 5, 5 };
-    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.BISOUS), new Clef(CaseType.PIERRE),
-            new Clef(CaseType.TERRE), new Clef(CaseType.CHOCOLAT), new MonteeEau(), new Helicoptere(),
+    static Objet[] DECK_ITEM = new Objet[] { new Clef(CaseType.BISOUS), new Clef(CaseType.GEOMETRIQUE),
+            new Clef(CaseType.ROYAL), new Clef(CaseType.CHOCOLAT), new MonteeEau(), new Helicoptere(),
             new Helicoptere(),
             new SacSable(), new SacSable() };
 
@@ -39,9 +39,9 @@ public class GameSettings {
     static int CASE_TAILLE = 120; // Taille de chaque cases de terrain
     static int CASE_ESPACE = 5; // Espace entre les cases.
     static int INPUT_WIDTH = 90; // Taille de la barre a droite ou il y a les boutons
-    static int EAU_WIDTH = 75; //
-    static int OBJET_ESPACE = 5; // Espace entre chaque case d'objet
-    static int OBJET_WIDTH = 110; // Taille de chaque case d'objets
+    static int EAU_WIDTH = 50; //
+    static int OBJET_ESPACE = 2; // Espace entre chaque case d'objet
+    static int OBJET_WIDTH = 115; // Taille de chaque case d'objets
     static float WATER_OVERLAY_OPACITY = 0.75f;
 
     /* PARAMETRE MAIN MENU */

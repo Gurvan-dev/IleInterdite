@@ -4,10 +4,6 @@
 
 - [.] Forme de plateau plus sympa qu'un simple carré tout nul : Carré, Rond, -, +
 
-## Gameplay
-
-- [.] Rôles : Plongeur
-
 ## Graphismes
 
 - [.] Mieux gérer le cas ou plusieurs joueur sont sur la même case : Les placer en carré au lieu d'en ligne
@@ -22,13 +18,12 @@
 ## Autre
 
 - [.] GameOver quand héliport coule & Quand montée d'eau atteint le maximum
-- [.] Menu de victoire / fin
-- [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal
-- [.] Montrer quel temple contient encore un artefact
-- [.] Resize toute les images et les passer en 300*300
+- [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal ?
+- [.] Pouvoir choisir la difficulté dans le main menu
 
 ## Bugs
 
 - [.] Bouton start sur menu principal n'est pas centré
-- [.] Ingénieur autoEndTurn alors qu'il peut freeAsseche
-- [.] Si un pion est au bord du terrain il considère qu'il peut aller nul part
+- [.] Si un pion est au bord du terrain il considère qu'il peut aller nul part parfois
+- [.] Explorateur ne peut se déplacer qu'en diagonale pour l'instant
+- [.] Utiliser une clé ne coût actuellement pas d'action

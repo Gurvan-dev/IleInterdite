@@ -26,12 +26,15 @@ public class Ingenieur extends Joueur {
             if (modele.plateau.InBounds(caseAssecher)
                     && modele.plateau.GetCase(caseAssecher.x, caseAssecher.y).Asseche()) {
                 int coutAction = freeAsseche ? 0 : 1;
+                if (modele.GetNombreAction() < coutAction)
+                    return false;
                 if (freeAsseche) {
                     freeAsseche = false;
                     UsedPower = false;
                 } else if (!UsedPower) {
                     freeAsseche = true;
                 }
+
                 modele.EffectueAction(numJoueur, coutAction);
                 return true;
             }

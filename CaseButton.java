@@ -36,17 +36,13 @@ public class CaseButton extends JButton {
         Case thisCase = modele.plateau.GetCase(pos.x, pos.y);
 
         /* DESSIN DU BACKGROUND */
-        if (thisCase.etat == CaseEtat.SUBMERGE) {
-            g.dispose();
-            return;
+        if (thisCase.etat != CaseEtat.SUBMERGE) {
+            BufferedImage caseGraphics = thisCase.GetImage();
+            g.drawImage(caseGraphics, 0, 0, GameSettings.CASE_TAILLE,
+                    GameSettings.CASE_TAILLE, 0, 0,
+                    caseGraphics.getWidth(),
+                    caseGraphics.getHeight(), null);
         }
-
-        BufferedImage caseGraphics = thisCase.GetImage();
-        g.drawImage(caseGraphics, 0, 0, GameSettings.CASE_TAILLE,
-                GameSettings.CASE_TAILLE, 0, 0,
-                caseGraphics.getWidth(),
-                caseGraphics.getHeight(), null);
-
         /* Dessiner les pions sur la case... */
         ArrayList<Joueur> jList = modele.GetJoueursOnCase(pos);
         if (jList.contains(modele.GetCurrentJoueur())) {

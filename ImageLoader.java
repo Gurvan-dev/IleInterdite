@@ -7,8 +7,8 @@ public class ImageLoader {
     static BufferedImage pion1;
 
     /* Terrain */
-    static BufferedImage[][] terrain_temple = new BufferedImage[1][2];
-    static BufferedImage[] terrain_random = new BufferedImage[1];
+    static BufferedImage[][] terrain_temple = new BufferedImage[4][2];
+    static BufferedImage[] terrain_random = new BufferedImage[8];
     static BufferedImage terrain_heliport;
     static BufferedImage terrain_water_overlay;
     static int random_count;
@@ -109,6 +109,15 @@ public class ImageLoader {
             case BISOUS:
                 temple_count[0] = (temple_count[0] + 1) % terrain_temple[0].length;
                 return temple_count[0];
+            case CHOCOLAT:
+                temple_count[1] = (temple_count[1] + 1) % terrain_temple[1].length;
+                return temple_count[1];
+            case ROYAL:
+                temple_count[2] = (temple_count[2] + 1) % terrain_temple[2].length;
+                return temple_count[2];
+            case GEOMETRIQUE:
+                temple_count[3] = (temple_count[3] + 1) % terrain_temple[3].length;
+                return temple_count[3];
             default: // NORMAL
                 random_count = (random_count + 1) % terrain_random.length;
                 return random_count;
