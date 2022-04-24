@@ -1,4 +1,5 @@
 import java.util.*;
+import java.awt.image.*;
 
 public class Joueur {
     Vector2 pos;
@@ -15,6 +16,8 @@ public class Joueur {
         this.pos = pos;
     }
 
+    // Appelée a chaque début de tour. Par défaut, ne fais rien mais est utilisé
+    // dans certain rôles.
     public void StartTurn() {
 
     }
@@ -37,10 +40,6 @@ public class Joueur {
         inventaire.remove(objNumber);
     }
 
-    public Objet getItem(int objNumber) {
-        return objNumber >= 0 && objNumber < inventaire.size() ? inventaire.get(objNumber) : null;
-    }
-
     /*
      * Implémentation des actions possibles
      * Toutes les actions retournes un booléen vrai si l'action à pu être éfféctué
@@ -48,6 +47,12 @@ public class Joueur {
      * Les actions sont responsable d'appeler le modèle avec la fonction
      * 'EffectueAction', avec le cout d'action correspondant
      */
+
+    /**
+     * @param caseAssecher Les coordonnées de a carde a assécher.
+     * 
+     * @return true si la case a pu être séchée, faux sinon.
+     **/
     public boolean Asseche(Vector2 caseAssecher) {
         if (caseAssecher.distance(pos) <= 1) {
             if (modele.plateau.InBounds(caseAssecher)
@@ -119,6 +124,16 @@ public class Joueur {
             modele.EffectueAction(numJoueur, 1);
         }
         return result;
+    }
+
+    /* GETTERS */
+
+    public Objet getItem(int objNumber) {
+        return objNumber >= 0 && objNumber < inventaire.size() ? inventaire.get(objNumber) : null;
+    }
+
+    public BufferedImage getIcon() {
+        return ImageLoader.personnage_placeholder_icon;
     }
 
 }

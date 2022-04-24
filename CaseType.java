@@ -21,6 +21,8 @@ public enum CaseType {
                 return Color.LIGHT_GRAY;
             case PIERRE:
                 return Color.BLACK;
+            case TERRE:
+                return Color.darkGray;
             default: // Case NORMAL
                 return Color.WHITE;
 
@@ -37,8 +39,27 @@ public enum CaseType {
                 return VENT;
             case 3:
                 return PIERRE;
+            case 4:
+                return TERRE;
             default:
                 return NORMAL;
+        }
+    }
+
+    public static int ToInt(CaseType c) {
+        switch (c) {
+            case HELIPORT:
+                return 0;
+            case FEU:
+                return 1;
+            case VENT:
+                return 2;
+            case PIERRE:
+                return 3;
+            case TERRE:
+                return 4;
+            default:
+                return 5;
         }
     }
 

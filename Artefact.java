@@ -20,6 +20,8 @@ public class Artefact extends Objet {
     }
 
     public BufferedImage toImage() {
-        return ImageLoader.objetPlaceholder;
+        int i = CaseType.ToInt(type);
+
+        return ImageLoader.objet_artefacts[i - 1];
     }
 }

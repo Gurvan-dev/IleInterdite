@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class VueInventaire extends JPanel implements Observer {
     Modele modele;
-    JButton donneObjetBoutton;
+    IconButton donneObjetBoutton;
     InventaireButton[] inventaire;
     Joueur currentJoueur;
 
@@ -16,10 +16,8 @@ public class VueInventaire extends JPanel implements Observer {
         modele.addObserver(this);
 
         /* DONNE OBJET BOUTTON */
-        donneObjetBoutton = new JButton();
-        donneObjetBoutton.addActionListener(e -> {
-            modele.DonneObjet(currentJoueur);
-        });
+
+        donneObjetBoutton = new IconButton(modele, currentJoueur);
         donneObjetBoutton.setSize(GameSettings.OBJET_WIDTH, GameSettings.OBJET_WIDTH);
         this.add(donneObjetBoutton);
 
@@ -37,7 +35,7 @@ public class VueInventaire extends JPanel implements Observer {
         // Note : Comme le gridlayout stretch ses components, on doit bien vérifier
         // qu'il fait la hauteur que l'on souhaiterais
         Dimension dim = new Dimension(GameSettings.OBJET_WIDTH,
-                GameSettings.OBJET_WIDTH * GameSettings.JOUEUR_TAILLE_INVENTAIRE);
+                GameSettings.OBJET_WIDTH * (GameSettings.JOUEUR_TAILLE_INVENTAIRE + 1));
         this.setPreferredSize(dim);
 
     }

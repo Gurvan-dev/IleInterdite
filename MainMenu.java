@@ -25,7 +25,6 @@ public class MainMenu {
         startButton.addActionListener(e -> {
             StartGame();
         });
-        startButton.setPreferredSize(new Dimension(GameSettings.MM_TAILLE_X, GameSettings.MM_TAILLE_Y));
 
         nbPlayerSlider.setMinorTickSpacing(1);
         nbPlayerSlider.setPaintTicks(true);

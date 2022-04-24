@@ -1,3 +1,5 @@
+import java.awt.image.*;
+
 public class Ingenieur extends Joueur {
     private boolean UsedPower = false;
     private boolean freeAsseche = false;
@@ -35,6 +37,11 @@ public class Ingenieur extends Joueur {
             }
         }
         return false;
+    }
+
+    @Override
+    public BufferedImage getIcon() {
+        return ImageLoader.personnage_ingenieur_icone;
     }
 
 }

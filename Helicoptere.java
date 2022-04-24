@@ -30,6 +30,6 @@ public class Helicoptere extends Objet {
     }
 
     public BufferedImage toImage() {
-        return ImageLoader.objetHelico;
+        return ImageLoader.objet_helicoptere;
     }
 }

@@ -1,3 +1,5 @@
+import java.awt.image.*;
+
 public class Pilote extends Joueur {
     private boolean UsedPower = false;
 
@@ -29,5 +31,10 @@ public class Pilote extends Joueur {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public BufferedImage getIcon() {
+        return ImageLoader.personnage_pilote_icone;
     }
 }

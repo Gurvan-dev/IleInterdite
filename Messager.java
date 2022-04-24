@@ -1,3 +1,5 @@
+import java.awt.image.*;
+
 public class Messager extends Joueur {
 
     public Messager(Modele modele, int tailleInventaire, Vector2 pos, int numJoueur) {
@@ -18,6 +20,11 @@ public class Messager extends Joueur {
             modele.EffectueAction(numJoueur, 1);
         }
         return result;
+    }
+
+    @Override
+    public BufferedImage getIcon() {
+        return ImageLoader.personnage_messager_icone;
     }
 
 }

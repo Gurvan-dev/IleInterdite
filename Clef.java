@@ -17,7 +17,9 @@ public class Clef extends Objet {
     }
 
     public BufferedImage toImage() {
-        return ImageLoader.objetPlaceholder;
+        int i = CaseType.ToInt(type);
+
+        return ImageLoader.objet_clef[i - 1];
     }
 
     public boolean utiliseObjet(Joueur j, Case c, Modele m) {

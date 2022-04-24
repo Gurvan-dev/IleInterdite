@@ -8,7 +8,7 @@ public class Deck<T> {
     private boolean melangeQuandVide;
 
     private static final Random rand = new Random();
-    private static final int MELANGE_SCALE = 2; // On va effectuer MELANGE_SCALE * Composant.length mélange a chaque
+    private static final int MELANGE_SCALE = 3; // On va effectuer MELANGE_SCALE * Composant.length mélange a chaque
                                                 // fois qu'on mélangera le deck
 
     public Deck(T[] composant) {

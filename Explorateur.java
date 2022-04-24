@@ -1,3 +1,5 @@
+import java.awt.image.*;
+
 public class Explorateur extends Joueur {
 
     public Explorateur(Modele modele, int tailleInventaire, Vector2 pos, int numJoueur) {
@@ -17,6 +19,11 @@ public class Explorateur extends Joueur {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public BufferedImage getIcon() {
+        return ImageLoader.personnage_explorateur_icone;
     }
 
 }

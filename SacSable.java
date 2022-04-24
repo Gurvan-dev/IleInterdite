@@ -7,7 +7,7 @@ public class SacSable extends Objet {
     }
 
     public BufferedImage toImage() {
-        return ImageLoader.objetPlaceholder;
+        return ImageLoader.objet_sac_sable;
     }
 
     public String toString() {

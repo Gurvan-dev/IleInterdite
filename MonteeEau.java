@@ -15,7 +15,7 @@ public class MonteeEau extends Objet {
     }
 
     public BufferedImage toImage() {
-        return ImageLoader.objetPlaceholder;
+        return ImageLoader.objet_montee_eau;
     }
 
 }

@@ -24,14 +24,16 @@
 - [.] GameOver quand héliport coule
 - [.] Menu principal et menu de victoire / fin
 - [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal
-- [.] Montrer quel objet est actuellement séléctionné
-- [.] Distribuer les rôles aléatoirement et les afficher
+- [.] Montrer quel objet est actuellement séléctionné et c'est le tour de quel joueur a droite
+- [.] Distribuer les rôles aléatoirement
+- [.] Montrer quel temple contient encore un artefact
 
 ## Bugs
 
 - [.] Les images de l'inventaire ne sont pas carrées
 - [.] Les scale des éléments du menu principal ne sont pas bien
 - [.] Ingénieur autoEndTurn alors que pas il peut freeAsseche
+- [.] Si un pion est au bord du terrain il considère qu'il peut aller nul part
 
 ## Idée
 
