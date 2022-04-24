@@ -9,20 +9,13 @@
 - [.] Mieux gérer le cas ou plusieurs joueur sont sur la même case : Les placer en carré au lieu d'en ligne
 - [.] Icône de poubelle pour la poubelle, Icone d'éclair pour action restante et autre icone pr celui qui est en train de jouer?
 - [.] Passer info style c'est le tour de qui et tout dans une barre en bas plutot que la ou c'est
-- [.] Artefact 2 manquant
 
 ## Inputs
 
 - [.] Idée : On se déplace avec les fleches, on fait shift+une direction pour assécher une case voisine.
-- [.] Clique droit sur case pour l'assécher ?
+- [.] Idée : Clique droit sur case pour l'assécher
 
 ## Autre
 
 - [.] GameOver quand héliport coule & Quand montée d'eau atteint le maximum
 - [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal ?
-
-## Bugs
-
-- [.] On peut se déplacer sous l'eau quand une case coule
-- [.] Y'a pas l'artefact choko
-- [.] Explorateur peut se déplacer gratos et de plusieurs cases en même temps
