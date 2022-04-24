@@ -7,7 +7,7 @@
 ## Graphismes
 
 - [.] Mieux gérer le cas ou plusieurs joueur sont sur la même case : Les placer en carré au lieu d'en ligne
-- [.] Icône de poubelle pour la poubelle, Icone d'éclair pour action restante et autre icone pr celui qui est en train de jouer?
+- [.] Icone d'éclair pour action restante et autre icone pr celui qui est en train de jouer?
 - [.] Passer info style c'est le tour de qui et tout dans une barre en bas plutot que la ou c'est
 
 ## Inputs
