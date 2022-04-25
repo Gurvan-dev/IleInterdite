@@ -19,4 +19,3 @@
 
 - [.] On peut penser a un JTitledScrollbar pour simplifier le code du menu principal ?
 - [.] Centrer les boutons sur EndGameMenu et MainMenu
-- [.] Afficher la cause du gameOver.

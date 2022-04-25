@@ -35,12 +35,15 @@ public class Clef extends Objet {
                     clefMemeType.add(co);
             }
         }
+        System.out.println(clefMemeType.size());
         if (clefMemeType.size() >= GameSettings.PARTIE_NOMBRE_CLEF_POUR_ARTEFACT) { // On peut penser a un paramètre
                                                                                     // statique
             // nombre de clef pour ouvrir
-            for (Objet o : clefMemeType)
+            for (int i = 0; i < GameSettings.PARTIE_NOMBRE_CLEF_POUR_ARTEFACT; i++) {
+                Objet o = clefMemeType.get(i);
                 if (o != this) // This sera remove automatiquement a la fin quand on utiliser un objet
                     j.removeItem(o);
+            }
             j.ajouteItem(new Artefact(type));
             m.EffectueAction(j.numJoueur, 1);
             return true;

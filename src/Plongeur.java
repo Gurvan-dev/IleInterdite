@@ -15,7 +15,7 @@ public class Plongeur extends Joueur {
             CaseEtat etat = modele.plateau.GetCase(newPos).etat;
 
             int coutAction = forceMove ? 0 : 1;
-            if (etat == CaseEtat.INONDE || etat == CaseEtat.SUBMERGE)
+            if ((etat == CaseEtat.INONDE || etat == CaseEtat.SUBMERGE) && modele.GetNombreAction() > 0)
                 coutAction = 0;
             if (modele.GetNombreAction() < coutAction)
                 return false;

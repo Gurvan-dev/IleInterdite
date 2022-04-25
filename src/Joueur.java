@@ -105,9 +105,10 @@ public class Joueur {
     public boolean UtiliseObjet(int objNumber, Vector2 pos) {
         if (inventaire.size() <= objNumber || objNumber < 0)
             return false;
-        boolean res = inventaire.get(objNumber).utiliseObjet(this, modele.plateau.GetCase(pos), modele);
+        Objet objet = inventaire.get(objNumber);
+        boolean res = objet.utiliseObjet(this, modele.plateau.GetCase(pos), modele);
         if (res)
-            inventaire.remove(objNumber);
+            inventaire.remove(objet);
         modele.EffectueAction(numJoueur, 0); // Les actions n'ont pas de coût mais on appelle pour update tout
                                              // correctement
 
